@@ -1,15 +1,47 @@
+$primary: theme("colors.primary");
+$secondary: theme("colors.secondary");
+$tertiary: theme("colors.tertiary");
+$quaternary: theme("colors.quaternary");
+
 .btn {
-  @apply inline-block rounded border border-transparent px-5 py-2 font-semibold capitalize transition;
+  &:hover {
+    box-shadow: none;
+    transform: translate3d(3px, 3px, 0);
+    transition: all ease 0.15s;
+  }
+
+  @apply inline-block rounded-full px-8 py-3 lg:py-3 lg:px-10 font-medium capitalize transition relative text-sm;
 }
 
 .btn-sm {
-  @apply rounded-sm px-4 py-1.5 text-sm;
+  &:hover {
+    box-shadow: none;
+    transform: translate3d(3px, 3px, 0);
+    transition: all ease 0.15s;
+  }
+  @apply rounded-full px-4 py-1.5 font-medium transition-all inline-block;
 }
 
 .btn-primary {
-  @apply border-primary bg-primary dark:border-darkmode-primary dark:text-dark text-white dark:bg-darkmode-primary;
+  @apply bg-primary text-white;
+  box-shadow: 4px 4px color-mix(in srgb, $primary, black 15%);
+}
+
+.btn-secondary {
+  @apply bg-secondary text-white;
+  box-shadow: 4px 4px color-mix(in srgb, $secondary, black 15%);
+}
+.btn-tertiary {
+  @apply bg-tertiary text-white;
+  box-shadow: 4px 4px color-mix(in srgb, $tertiary, black 15%);
+}
+.btn-quaternary {
+  @apply bg-quaternary text-white;
+  box-shadow: 4px 4px color-mix(in srgb, $quaternary, black 15%);
 }
 
 .btn-outline-primary {
-  @apply border-dark text-dark hover:bg-dark dark:hover:text-dark bg-transparent hover:text-white dark:border-darkmode-primary dark:text-white dark:hover:bg-darkmode-primary;
+  @apply bg-white text-dark hover:text-primary border-[1.5px];
+  border-color: color-mix(in srgb, $primary, black 15%);
+  box-shadow: 4px 4px color-mix(in srgb, $primary, black 15%);
 }
