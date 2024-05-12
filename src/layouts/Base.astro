@@ -161,5 +161,21 @@ const { title, meta_title, description, image, noindex, canonical } =
       <slot />
     </main>
     <Footer />
+
+    <script>
+      import AOS from "aos";
+      import "aos/dist/aos.css";
+
+      function aosInit() {
+        AOS.init({
+          duration: 600,
+          once: true,
+        });
+      }
+      aosInit();
+      document.addEventListener("astro:after-swap", aosInit);
+    </script>
+
+    <script src="scripts/main.js"></script>
   </body>
 </html>

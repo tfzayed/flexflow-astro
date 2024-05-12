@@ -9,8 +9,12 @@
       "url": "/about"
     },
     {
-      "name": "Elements",
-      "url": "/elements"
+      "name": "Blog",
+      "url": "/blog"
+    },
+    {
+      "name": "Pricing",
+      "url": "/pricing"
     },
     {
       "name": "Pages",
@@ -18,27 +22,35 @@
       "hasChildren": true,
       "children": [
         {
+          "name": "Features",
+          "url": "/features"
+        },
+        {
+          "name": "Career",
+          "url": "/career"
+        },
+        {
+          "name": "Integration",
+          "url": "/integration"
+        },
+        {
+          "name": "Terms & Condition",
+          "url": "/terms"
+        },
+        {
+          "name": "Faq",
+          "url": "/faq"
+        },
+        {
           "name": "Contact",
           "url": "/contact"
         },
         {
-          "name": "Blog",
-          "url": "/blog"
+          "name": "How It Works",
+          "url": "/how-it-works"
         },
         {
-          "name": "Authors",
-          "url": "/authors"
-        },
-        {
-          "name": "Categories",
-          "url": "/categories"
-        },
-        {
-          "name": "Tags",
-          "url": "/tags"
-        },
-        {
-          "name": "404 Page",
+          "name": "404",
           "url": "/404"
         }
       ]

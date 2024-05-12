@@ -1,27 +1,27 @@
 ---
 enable: true
-title: "What Users Are Saying About Astroplate"
-description: "Don't just take our word for it - hear from some of our satisfied users!  Check out some of our testimonials below to see what others are saying about Astroplate."
+title: "Discover What Our Clients Have to Say!"
+badge: "Testimonial"
 
 # Testimonials
 testimonials:
-  - name: "Marvin McKinney"
-    designation: "Web Designer"
-    avatar: "/images/avatar-sm.png"
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui iusto illo molestias, assumenda expedita commodi inventore non itaque molestiae voluptatum dolore, facilis sapiente, repellat veniam."
+  - name: "Guillermo Rauch"
+    designation: "CEO, Vercel"
+    avatar: "/images/profile-sm-1.png"
+    content: "Leaving our webhook management to Hookdeck allowed us to focus on building Canal for our customers. I trust my critical webhooks with the team... we haven't missed one for over a year"
+
+  - name: "Emily Davis"
+    designation: "CTO, Vercel"
+    avatar: "/images/profile-sm-2.png"
+    content: "“The value I get with Hookdeck is this peace of mind around handling huge volumes of event data. Hookdeck acts as a shield to protect our infrastructure from massive demand  Hookdeck."
 
   - name: "Marvin McKinney"
     designation: "Web Designer"
-    avatar: "/images/avatar-sm.png"
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui iusto illo molestias, assumenda expedita commodi inventore non itaque molestiae voluptatum dolore, facilis sapiente, repellat veniam."
+    avatar: "/images/profile-sm-1.png"
+    content: "Leaving our webhook management to Hookdeck allowed us to focus on building Canal for our customers. I trust my critical webhooks with the team. we haven't missed one for over a year"
 
-  - name: "Marvin McKinney"
-    designation: "Web Designer"
-    avatar: "/images/avatar-sm.png"
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui iusto illo molestias, assumenda expedita commodi inventore non itaque molestiae voluptatum dolore, facilis sapiente, repellat veniam."
-
-  - name: "Marvin McKinney"
-    designation: "Web Designer"
-    avatar: "/images/avatar-sm.png"
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui iusto illo molestias, assumenda expedita commodi inventore non itaque molestiae voluptatum dolore, facilis sapiente, repellat veniam."
+  - name: "Alexander Chen"
+    designation: "COO, Vercel"
+    avatar: "/images/profile-sm-2.png"
+    content: "Leaving our webhook management to Hookdeck allowed us to focus on building Canal for our customers. I trust my critical webhooks with the team. we haven't missed one for over a year"
 ---

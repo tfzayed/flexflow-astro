@@ -32,6 +32,12 @@
     "link": "https://github.com/teamosis-products/flexflow-astro"
   },
 
+  "login_button": {
+    "enable": true,
+    "label": "Login",
+    "link": "/login"
+  },
+
   "disqus": {
     "enable": true,
     "shortname": "themefisher-template",

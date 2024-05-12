@@ -16,11 +16,13 @@ export interface NavigationLink {
 }
 
 const { main }: { main: NavigationLink[] } = menu;
-const { navigation_button, settings } = config;
+const { navigation_button, login_button, settings } = config;
 const { pathname } = Astro.url;
 ---
 
-<header class={`header z-30 ${settings.sticky_header && "sticky top-0"}`}>
+<header
+  class={`header z-30 transition-all w-full top-3 2xl:top-7 ${settings.sticky_header && "fixed"}`}
+>
   <nav class="navbar container">
     <!-- logo -->
     <div class="order-0">
@@ -103,23 +105,36 @@ const { pathname } = Astro.url;
         ))
       }
       {
+        login_button.enable && (
+          <li class="lg:hidden nav-item">
+            <a href={login_button.link}>{login_button.label}</a>
+          </li>
+        )
+      }
+      {
         navigation_button.enable && (
-          <li class="mt-4 inline-block lg:hidden">
-            <a
-              class="btn btn-outline-primary btn-sm"
-              href={navigation_button.link}
-            >
+          <li class="lg:hidden nav-item">
+            <a class="btn-sm btn-primary" href={navigation_button.link}>
               {navigation_button.label}
             </a>
           </li>
         )
       }
     </ul>
-    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
+    <div
+      class="order-1 ml-auto items-center md:order-2 lg:ml-0 text-sm hidden lg:flex"
+    >
+      {
+        login_button.enable && (
+          <a class="inline-block mr-3" href={login_button.link}>
+            {login_button.label}
+          </a>
+        )
+      }
       {
         navigation_button.enable && (
           <a
-            class="btn btn-outline-primary btn-sm hidden lg:inline-block"
+            class="btn-sm btn-primary inline-block"
             href={navigation_button.link}
           >
             {navigation_button.label}
