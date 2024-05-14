@@ -40,3 +40,11 @@ export type Testimonial = {
     content: string;
   }[];
 };
+
+export type IntegrationCard = {
+  title: string;
+  badge: string;
+  content: string;
+  button: Button;
+  apps: string[];
+};

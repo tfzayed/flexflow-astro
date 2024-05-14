@@ -1,0 +1,96 @@
+---
+import { markdownify } from "@/lib/utils/textConverter";
+import type { IntegrationCard } from "@/types";
+import { getEntry } from "astro:content";
+
+const integration = await getEntry("integration", "-index");
+const { title, badge, content, button, apps } =
+  integration.data as IntegrationCard;
+---
+
+<section class="section">
+  <div class="px-4">
+    <div class="container-lg card-lg bg-secondary/15 border-secondary">
+      <div
+        class="section-inner container mx-auto flex lg:flex-row flex-col items-center gap-x-10 gap-y-14"
+      >
+        <div class="flex-1">
+          <span
+            class="bg-secondary/15 px-5 py-1 rounded-full text-base-sm text-dark inline-block mb-3"
+            data-aos="fade-left-sm"
+            set:html={markdownify(badge)}
+          />
+
+          <h2
+            class="mb-4"
+            data-aos="fade-left-sm"
+            data-aos-delay="50"
+            set:html={markdownify(title)}
+          />
+          <p
+            class="mb-7 text-dark/75 font-medium"
+            data-aos="fade-left-sm"
+            data-aos-delay="100"
+            set:html={markdownify(content)}
+          />
+          {
+            button.enable && (
+              <a
+                href={button.link}
+                class="btn btn-secondary"
+                set:html={markdownify(button.label)}
+              />
+            )
+          }
+        </div>
+
+        <div class="flex-1">
+          <div class="animate-features">
+            <div class="animate-features-top-images">
+              {
+                apps
+                  .slice(0, 3)
+                  .map((app, i) => (
+                    <img
+                      src={app}
+                      alt="Feature Tool Image"
+                      data-aos="fade-up-sm"
+                      data-aos-delay={i * 45}
+                    />
+                  ))
+              }
+            </div>
+            <div class="animate-features-middle-images">
+              {
+                apps
+                  .slice(3, 7)
+                  .map((app, i) => (
+                    <img
+                      src={app}
+                      alt="Feature Tool Image"
+                      data-aos="fade-up-sm"
+                      data-aos-delay={i * 75}
+                    />
+                  ))
+              }
+            </div>
+            <div class="animate-features-bottom-images">
+              {
+                apps
+                  .slice(7)
+                  .map((app, i) => (
+                    <img
+                      src={app}
+                      alt="Feature Tool Image"
+                      data-aos="fade-up-sm"
+                      data-aos-delay={i * 100}
+                    />
+                  ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

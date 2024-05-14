@@ -1,6 +1,7 @@
 ---
 import Features from "@/components/feature/Features.astro";
 import HowItWorksTab from "@/components/how-it-works/HowItWorksTab";
+import IntegrationSection from "@/components/integration/IntegrationSection.astro";
 import Base from "@/layouts/Base.astro";
 import { markdownify } from "@/lib/utils/textConverter";
 import Testimonial from "@/partials/Testimonial.astro";
@@ -179,5 +180,6 @@ const { banner, achievement, how_it_work, feature }: Homepage = homepage.data;
   <!-- /Features -->
 
   <Testimonial testimonial={testimonial} />
+  <IntegrationSection />
   <!-- <CallToAction call_to_action={call_to_action} /> -->
 </Base>
