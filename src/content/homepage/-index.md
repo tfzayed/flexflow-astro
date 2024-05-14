@@ -22,6 +22,7 @@ banner:
 
 # Achievement
 achievement:
+  enable: true
   title: "We earn trust by working efficiently"
   achievements:
     - title: "15+"
@@ -34,25 +35,27 @@ achievement:
       content: "Positive reviews"
 
 # How it works
-how-it-work:
+how_it_work:
+  enable: true
   title: "How It Works"
   content: "For who thoroughly her boy estimating conviction. Removed demands expense account in outward tedious do."
   processes:
     - title: "Consultation"
-      logo: "/images/svg/icons/conversation.svg"
+      icon: "/images/svg/icons/conversation.svg"
       image: "/images/dashboard.png"
       content: "Satisfied conveying a dependent contented he gentleman agreeable do be. Warrant private blushes removed."
     - title: "Implementation"
-      logo: "/images/svg/icons/implementation.svg"
+      icon: "/images/svg/icons/implementation.svg"
       image: "/images/dashboard-1.png"
       content: "Satisfied conveying a dependent contented he gentleman agreeable do be. Warrant private blushes removed."
     - title: "Deployment"
-      logo: "/images/svg/icons/deploy.svg"
+      icon: "/images/svg/icons/deploy.svg"
       image: "/images/dashboard.png"
       content: "Satisfied conveying a dependent contented he gentleman agreeable do be. Warrant private blushes removed."
 
 # Features
 feature:
+  enable: true
   title: "Explore our amazing features"
   content: "Our user-friendly interface and intuitive dashboards make it easy for you to explore and analyze your data, regardless of your technical expertise."
   badge: "What we do"
@@ -75,25 +78,25 @@ feature:
       image: "/images/feature-thumb-1.png"
       insights:
         - title: "Analysis And Research"
-          icon: "fa-chart-column"
+          icon: "FaChartColumn"
         - title: "Proof Of Concept"
-          icon: "fa-hands-holding"
+          icon: "FaHandsHolding"
         - title: "Event Marketing"
-          icon: "fa-briefcase"
+          icon: "FaBriefcase"
         - title: "Launch Your Project"
-          icon: "fa-rocket"
+          icon: "FaRocket"
         - title: "Content Creation"
-          icon: "fa-file-medical"
+          icon: "FaFileMedical"
         - title: "Determine The Result"
-          icon: "fa-clipboard-list"
+          icon: "FaClipboard"
     - title: "Transform your data into actionable insights"
       content: "From forecasting future trends to identifying risks, our platform provides the insights you need to succeed."
       image: "/images/feature-thumb-2.png"
       insights:
         - title: "Our User-Friendly Interface Makes It Easy To Stay Organized."
-          icon: "fa-chart-column"
+          icon: "FaChartColumn"
         - title: "Track Progress With Real-Time Updates."
-          icon: "fa-hands-holding"
+          icon: "FaHandsHolding"
         - title: "Prioritize Tasks And Delegate Them To Team Members With Ease."
-          icon: "fa-briefcase"
+          icon: "FaBriefcase"
 ---

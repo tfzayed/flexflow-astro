@@ -152,17 +152,7 @@ input[type="checkbox"] {
 .custom-tab {
   &-nav {
     &-item {
-      @apply cursor-pointer;
-      &.active {
-        @apply opacity-100;
-      }
-    }
-  }
-  &-content {
-    &-panel {
-      &.active {
-        @apply block;
-      }
+      @apply cursor-pointer mb-5;
     }
   }
 }
@@ -1004,4 +994,28 @@ input[type="checkbox"] {
 
 .active-toggler-item {
   @apply border;
+}
+
+// testimonial
+.swiper-slide {
+  &:nth-child(1n + 0) {
+    .testimonial-bg {
+      @apply border-secondary;
+    }
+  }
+  &:nth-child(2n + 0) {
+    .testimonial-bg {
+      @apply border-quaternary;
+    }
+  }
+  &:nth-child(3n + 0) {
+    .testimonial-bg {
+      @apply border-tertiary;
+    }
+  }
+  &:nth-child(4n + 0) {
+    .testimonial-bg {
+      @apply border-primary;
+    }
+  }
 }
