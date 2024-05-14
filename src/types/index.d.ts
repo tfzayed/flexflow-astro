@@ -48,3 +48,20 @@ export type IntegrationCard = {
   button: Button;
   apps: string[];
 };
+
+export type PricingSection = {
+  title: string;
+  badge: string;
+  features: string[];
+  plans: {
+    label: string;
+    id: string;
+    packs: {
+      type: string;
+      icon: string;
+      price: string;
+      compound: string;
+      features: string[];
+    }[];
+  }[];
+};

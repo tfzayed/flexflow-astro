@@ -7,10 +7,12 @@ features:
   - "Cancel Anytime"
 plans:
   - label: "Monthly"
+    id: "monthly"
     packs:
       - type: "Free"
         icon: "images/svg/gift.svg"
         price: "00"
+        compound: "Monthly"
         features:
           - "Customer support"
           - "Analytics & reporting"
@@ -19,6 +21,7 @@ plans:
       - type: "Basic Plan"
         icon: "images/svg/stash.svg"
         price: "29"
+        compound: "Monthly"
         features:
           - "Customer support"
           - "Analytics & reporting"
@@ -27,6 +30,7 @@ plans:
       - type: "Pro Plan"
         icon: "images/svg/crown.svg"
         price: "69"
+        compound: "Monthly"
         features:
           - "Customer support"
           - "Analytics & reporting"
@@ -35,16 +39,19 @@ plans:
       - type: "Premium Plan"
         icon: "images/svg/diamond.svg"
         price: "100"
+        compound: "Monthly"
         features:
           - "Customer support"
           - "Analytics & reporting"
           - "Integrations"
           - "Affiliate Marketplace"
   - label: "Yearly"
+    id: "yearly"
     packs:
       - type: "Free"
         icon: "images/svg/gift.svg"
         price: "00"
+        compound: "Yearly"
         features:
           - "Customer support"
           - "Analytics & reporting"
@@ -53,6 +60,7 @@ plans:
       - type: "Basic Plan"
         icon: "images/svg/stash.svg"
         price: "70"
+        compound: "Yearly"
         features:
           - "Customer support"
           - "Analytics & reporting"
@@ -61,6 +69,7 @@ plans:
       - type: "Pro Plan"
         icon: "images/svg/crown.svg"
         price: "100"
+        compound: "Yearly"
         features:
           - "Customer support"
           - "Analytics & reporting"
@@ -69,6 +78,7 @@ plans:
       - type: "Premium Plan"
         icon: "images/svg/diamond.svg"
         price: "120"
+        compound: "Yearly"
         features:
           - "Customer support"
           - "Analytics & reporting"
