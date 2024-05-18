@@ -1,0 +1,30 @@
+---
+import { markdownify } from "@/lib/utils/textConverter";
+
+const { card, i } = Astro.props;
+---
+
+<div
+  class="card colorize-hover-card bg-white p-5 lg:px-12 shadow"
+  data-aos="fade-up-sm"
+  data-aos-delay={i * 50}
+>
+  <div class="flex items-start gap-5">
+    <img
+      src={card.icon}
+      alt="Icon"
+      width="40"
+      height="40"
+      class="min-w-max colorize-hover-card-icon rounded-md p-3"
+    />
+    <!--Content-->
+    <div>
+      <span class="mb-2 text-sm font-medium text-text">{card.date}</span>
+      <h6 class="mb-4" set:html={markdownify(card.title)} />
+      <p
+        class="text-sm lg:col-10 text-text"
+        set:html={markdownify(card.content)}
+      />
+    </div>
+  </div>
+</div>

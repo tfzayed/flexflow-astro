@@ -1,0 +1,53 @@
+---
+const { video } = Astro.props;
+---
+
+{
+  video.enable && (
+    <section class="section-hero-overlap" data-aos="fade-up-sm">
+      <div class="flex justify-center relative">
+        <div class="yt-container card-lg overflow-hidden border-primary">
+          <img
+            id="yt-custom-thumb"
+            src="images/career-play-thumb.png"
+            class="brightness-50"
+            alt="Youtube Video Thumbnail"
+          />
+          <iframe
+            id="yt-iframe"
+            src={video.src}
+            frameborder="0"
+            style="display: none"
+            loading="lazy"
+          />
+        </div>
+        <div
+          class="absolute inset-0 grid place-items-center"
+          id="yt-custom-thumb-btn"
+        >
+          <button>
+            <div class="wave-btn is-play">
+              <div class="wave-btn-outer-circle has-scale-animation" />
+              <div class="wave-btn-outer-circle has-scale-animation has-delay-short" />
+              <div class="wave-btn-icon is-play">
+                <svg height="100%" width="100%" class="fill-[#061237]">
+                  <polygon
+                    class="wave-btn-triangle"
+                    points="5,0 30,15 5,30"
+                    viewBox="0 0 30 15"
+                  />
+                  <path
+                    class="path stroke-[#061237]"
+                    d="M5,0 L30,15 L5,30z"
+                    fill="none"
+                    stroke-width="1"
+                  />
+                </svg>
+              </div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </section>
+  )
+}

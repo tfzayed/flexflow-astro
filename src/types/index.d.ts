@@ -65,3 +65,10 @@ export type PricingSection = {
     }[];
   }[];
 };
+
+export type CardType = {
+  title: string;
+  content: string;
+  icon: string;
+  date?: string;
+};

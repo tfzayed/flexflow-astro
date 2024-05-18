@@ -52,9 +52,66 @@ const pagesCollection = defineCollection({
   }),
 });
 
+const aboutCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    meta_title: z.string().optional(),
+    badge: z.string().optional(),
+    description: z.string().optional(),
+    video: z
+      .object({
+        enable: z.boolean(),
+        src: z.string().url().optional(),
+      })
+      .optional(),
+    draft: z.boolean().optional(),
+    story: z
+      .object({
+        badge: z.string().optional(),
+        title: z.string(),
+        description: z.string(),
+        cards: z.array(
+          z.object({
+            date: z.string(),
+            icon: z.string(),
+            title: z.string(),
+            content: z.string(),
+          }),
+        ),
+      })
+      .optional(),
+    value: z
+      .object({
+        badge: z.string().optional(),
+        title: z.string(),
+        description: z.string(),
+        cards: z.array(
+          z.object({
+            icon: z.string(),
+            title: z.string(),
+            content: z.string(),
+          }),
+        ),
+        inspiration: z.object({
+          title: z.string(),
+          visions: z.array(
+            z.object({
+              title: z.string(),
+              icon: z.string(),
+              image: z.string(),
+              content: z.string(),
+            }),
+          ),
+        }),
+      })
+      .optional(),
+  }),
+});
+
 // Export collections
 export const collections = {
   blog: blogCollection,
   authors: authorsCollection,
   pages: pagesCollection,
+  about: aboutCollection,
 };

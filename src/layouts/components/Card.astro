@@ -1,0 +1,21 @@
+---
+import { markdownify } from "@/lib/utils/textConverter";
+
+const { card, i } = Astro.props;
+---
+
+<div
+  class="card colorize-hover-card p-4 lg:py-9 lg:px-5 text-center shadow flex-1"
+  data-aos="fade-in-sm"
+  data-aos-delay={i * 50}
+>
+  <img
+    src={card.icon}
+    alt="Icon"
+    width="40"
+    height="40"
+    class="min-w-max colorize-hover-card-icon rounded-md p-3 mb-6 mx-auto"
+  />
+  <h6 class="mb-4 text-dark" set:html={markdownify(card.title)} />
+  <p class="text-sm text-text" set:html={markdownify(card.content)} />
+</div>
