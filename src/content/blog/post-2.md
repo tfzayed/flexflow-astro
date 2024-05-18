@@ -1,10 +1,11 @@
 ---
-title: "How to build an Application with modern Technology"
+title: "How to manage your start up employees"
 meta_title: ""
 description: "this is meta description"
 date: 2023-04-04T05:00:00Z
 image: "/images/blog/blog-post-2.jpeg"
-author: "Sam Wilson"
+author: "Andrew Lee"
+category: ["Integration"]
 button: "Read More"
 draft: false
 ---

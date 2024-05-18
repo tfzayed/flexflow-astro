@@ -57,4 +57,13 @@
   };
 
   addFixedStyleOnScroll(".header", responsiveStickyHeader, 1535);
+
+  // ########################## Accordion ##########################
+  const accordion = document.querySelectorAll("[data-accordion]");
+  accordion.forEach((header) => {
+    header.addEventListener("click", () => {
+      const accordionItem = header.parentElement;
+      accordionItem.classList.toggle("active");
+    });
+  });
 })();

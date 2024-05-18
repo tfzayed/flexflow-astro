@@ -104,24 +104,27 @@ const { title, badge, features, plans } = pricing.data as PricingSection;
   document.addEventListener("astro:page-load", () => {
     let billStatus = "monthly";
     const billToggler = document.getElementById("bill-switch");
+    const monthlyElement = document.getElementById("monthly");
+    const yearlyElement = document.getElementById("yearly");
+
+    // Initialize display states
+    if (monthlyElement && yearlyElement) {
+      monthlyElement.style.display = "grid";
+      yearlyElement.style.display = "none";
+    }
 
     if (billToggler) {
-      billToggler.addEventListener("click", (e) => {
-        const billSwitch = document.getElementById("bill-switch");
-        const monthlyElement = document.getElementById("monthly");
-        const yearlyElement = document.getElementById("yearly");
-
-        if (billStatus !== "monthly") {
-          billStatus = "monthly";
+      billToggler.addEventListener("click", () => {
+        if (billStatus === "monthly") {
+          billStatus = "yearly";
           monthlyElement!.style.display = "none";
           yearlyElement!.style.display = "grid";
-          billSwitch!.classList.toggle("toggleBtnOn");
         } else {
-          billStatus = "yearly";
+          billStatus = "monthly";
           yearlyElement!.style.display = "none";
           monthlyElement!.style.display = "grid";
-          billSwitch!.classList.toggle("toggleBtnOn");
         }
+        billToggler.classList.toggle("toggleBtnOn");
       });
     }
   });

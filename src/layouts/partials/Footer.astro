@@ -1,39 +1,358 @@
 ---
-import Logo from "@/components/Logo.astro";
-import Social from "@/components/Social.astro";
-import config from "@/config/config.json";
 import menu from "@/config/menu.json";
-import social from "@/config/social.json";
-import { markdownify } from "@/lib/utils/textConverter";
 
-const { footer }: { footer: { name: string; url: string }[] } = menu;
+const { footer } = menu;
 ---
 
 <footer class="bg-theme-light">
-  <div class="container">
-    <div class="row items-center py-10">
-      <div class="mb-8 text-center lg:col-3 lg:mb-0 lg:text-left">
-        <Logo />
-      </div>
-      <div class="mb-8 text-center lg:col-6 lg:mb-0">
-        <ul>
-          {
-            footer.map((menu) => (
-              <li class="m-3 inline-block">
-                <a href={menu.url}>{menu.name}</a>
-              </li>
-            ))
-          }
+  <div class="container px-10 md:px-4 py-16">
+    <div class="grid grid-cols-12 gap-y-10 md:space-x-10">
+      <div class="col-span-12 md:col-span-3">
+        <a href="index.html" class="mb-5 inline-block">
+          <img src="images/logo.png" width="180" height="21" alt="logo" />
+        </a>
+        <p class="text-sm mb-5">
+          It is a long established fact that areader will be distracted
+        </p>
+        <ul class="text-dark space-y-2.5 min-w-min">
+          <li class="flex items-center gap-x-2">
+            <svg
+              width="34"
+              height="35"
+              viewBox="0 0 34 35"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <mask
+                id="path-1-outside-1_2021_2937"
+                maskUnits="userSpaceOnUse"
+                x="0"
+                y="0.5"
+                width="34"
+                height="34"
+                fill="black"
+              >
+                <rect fill="white" y="0.5" width="34" height="34"></rect>
+                <path
+                  d="M0 4.5C0 2.29086 1.79086 0.5 4 0.5H28C30.2091 0.5 32 2.29086 32 4.5V28.5C32 30.7091 30.2091 32.5 28 32.5H4C1.79086 32.5 0 30.7091 0 28.5V4.5Z"
+                ></path>
+              </mask>
+              <path
+                d="M0 4.5C0 2.29086 1.79086 0.5 4 0.5H28C30.2091 0.5 32 2.29086 32 4.5V28.5C32 30.7091 30.2091 32.5 28 32.5H4C1.79086 32.5 0 30.7091 0 28.5V4.5Z"
+                fill="#EAFBFF"></path>
+              <path
+                d="M0 0.5H32H0ZM34 28.5C34 31.8137 31.3137 34.5 28 34.5H6C2.68629 34.5 0 31.8137 0 28.5C0 29.6046 1.79086 30.5 4 30.5H28C29.1046 30.5 30 29.6046 30 28.5H34ZM0 32.5V0.5V32.5ZM28 0.5C31.3137 0.5 34 3.18629 34 6.5V28.5C34 31.8137 31.3137 34.5 28 34.5V30.5C29.1046 30.5 30 29.6046 30 28.5V4.5C30 2.29086 29.1046 0.5 28 0.5Z"
+                fill="#27C8E8"
+                mask="url(#path-1-outside-1_2021_2937)"></path>
+              <path
+                d="M16 16.1C15.4317 16.1 14.8866 15.8893 14.4848 15.5142C14.0829 15.1391 13.8571 14.6304 13.8571 14.1C13.8571 13.5696 14.0829 13.0609 14.4848 12.6858C14.8866 12.3107 15.4317 12.1 16 12.1C16.5683 12.1 17.1134 12.3107 17.5152 12.6858C17.9171 13.0609 18.1429 13.5696 18.1429 14.1C18.1429 14.3626 18.0874 14.6227 17.9797 14.8654C17.8721 15.108 17.7142 15.3285 17.5152 15.5142C17.3162 15.6999 17.08 15.8472 16.82 15.9478C16.5601 16.0483 16.2814 16.1 16 16.1ZM16 8.5C14.4087 8.5 12.8826 9.09 11.7574 10.1402C10.6321 11.1904 10 12.6148 10 14.1C10 18.3 16 24.5 16 24.5C16 24.5 22 18.3 22 14.1C22 12.6148 21.3679 11.1904 20.2426 10.1402C19.1174 9.09 17.5913 8.5 16 8.5Z"
+                fill="black"></path>
+            </svg>
+
+            <a
+              href="https://maps.app.goo.gl/1M8e7rfvDu9knxzg9"
+              target="_blank"
+              class="text-sm font-medium">NYC, United States</a
+            >
+          </li>
+          <li class="flex items-center gap-x-2">
+            <svg
+              width="34"
+              height="35"
+              viewBox="0 0 34 35"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <mask
+                id="path-1-outside-1_2021_2941"
+                maskUnits="userSpaceOnUse"
+                x="0"
+                y="0.5"
+                width="34"
+                height="34"
+                fill="black"
+              >
+                <rect fill="white" y="0.5" width="34" height="34"></rect>
+                <path
+                  d="M0 4.5C0 2.29086 1.79086 0.5 4 0.5H28C30.2091 0.5 32 2.29086 32 4.5V28.5C32 30.7091 30.2091 32.5 28 32.5H4C1.79086 32.5 0 30.7091 0 28.5V4.5Z"
+                ></path>
+              </mask>
+              <path
+                d="M0 4.5C0 2.29086 1.79086 0.5 4 0.5H28C30.2091 0.5 32 2.29086 32 4.5V28.5C32 30.7091 30.2091 32.5 28 32.5H4C1.79086 32.5 0 30.7091 0 28.5V4.5Z"
+                fill="#FFFBEE"></path>
+              <path
+                d="M0 0.5H32H0ZM34 28.5C34 31.8137 31.3137 34.5 28 34.5H6C2.68629 34.5 0 31.8137 0 28.5C0 29.6046 1.79086 30.5 4 30.5H28C29.1046 30.5 30 29.6046 30 28.5H34ZM0 32.5V0.5V32.5ZM28 0.5C31.3137 0.5 34 3.18629 34 6.5V28.5C34 31.8137 31.3137 34.5 28 34.5V30.5C29.1046 30.5 30 29.6046 30 28.5V4.5C30 2.29086 29.1046 0.5 28 0.5Z"
+                fill="#FBC417"
+                mask="url(#path-1-outside-1_2021_2941)"></path>
+              <path
+                d="M23.1001 24.5C21.0203 24.5 19.0636 24.1067 17.2302 23.32C15.3968 22.5333 13.7969 21.4565 12.4306 20.0896C11.0644 18.7232 9.98445 17.1232 9.19092 15.2896C8.39739 13.456 8.0009 11.4931 8.00143 9.4008C7.9881 9.1608 8.06809 8.95067 8.24141 8.7704C8.41472 8.59013 8.62804 8.5 8.88135 8.5H12.0011C12.241 8.5 12.4477 8.59013 12.621 8.7704C12.7943 8.95067 12.881 9.1672 12.881 9.42C12.881 10.0067 12.921 10.56 13.001 11.08C13.081 11.6 13.2076 12.0933 13.3809 12.56C13.4476 12.7067 13.4609 12.8565 13.4209 13.0096C13.3809 13.1627 13.301 13.3061 13.181 13.44L11.1811 15.44C11.7544 16.6133 12.5677 17.7267 13.6209 18.78C14.6742 19.8333 15.8074 20.6733 17.0206 21.3L19.0204 19.3C19.1404 19.18 19.2804 19.1 19.4404 19.06C19.6004 19.02 19.7604 19.0333 19.9204 19.1C20.4137 19.26 20.9237 19.3835 21.4506 19.4704C21.9775 19.5573 22.5207 19.6005 23.0801 19.6C23.3334 19.6 23.5502 19.6933 23.7304 19.88C23.9107 20.0667 24.0005 20.2933 24 20.56V23.62C24 23.86 23.9133 24.0667 23.74 24.24C23.5667 24.4133 23.3534 24.5 23.1001 24.5ZM18.5005 22.1C19.1004 22.3267 19.727 22.5067 20.3803 22.64C21.0336 22.7733 21.7069 22.86 22.4001 22.9V21.18C21.9868 21.1533 21.5634 21.1067 21.1299 21.04C20.6963 20.9733 20.2665 20.8733 19.8404 20.74L18.5005 22.1ZM22.4001 16.5C22.4001 14.7133 21.7802 13.2 20.5403 11.96C19.3004 10.72 17.7872 10.1 16.0007 10.1V8.5C17.1073 8.5 18.1472 8.71013 19.1204 9.1304C20.0937 9.55067 20.9403 10.1205 21.6602 10.84C22.3801 11.56 22.9502 12.4067 23.3705 13.38C23.7907 14.3533 24.0005 15.3933 24 16.5H22.4001ZM19.2004 16.5C19.2004 15.62 18.8871 14.8667 18.2605 14.24C17.6339 13.6133 16.8806 13.3 16.0007 13.3V11.7C17.3339 11.7 18.4672 12.1667 19.4004 13.1C20.3337 14.0333 20.8003 15.1667 20.8003 16.5H19.2004ZM10.4012 13.96L11.7211 12.62C11.6144 12.2333 11.5243 11.8267 11.4507 11.4C11.3771 10.9733 11.3273 10.54 11.3011 10.1H9.62128C9.64795 10.74 9.72794 11.38 9.86126 12.02C9.99458 12.66 10.1746 13.3067 10.4012 13.96Z"
+                fill="black"></path>
+            </svg>
+
+            <a href="tel:+000111222333" class="text-sm font-medium"
+              >000111222333
+            </a>
+          </li>
+          <li class="flex items-center gap-x-2">
+            <svg
+              width="34"
+              height="35"
+              viewBox="0 0 34 35"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <mask
+                id="path-1-outside-1_2021_2945"
+                maskUnits="userSpaceOnUse"
+                x="0"
+                y="0.5"
+                width="34"
+                height="34"
+                fill="black"
+              >
+                <rect fill="white" y="0.5" width="34" height="34"></rect>
+                <path
+                  d="M0 4.5C0 2.29086 1.79086 0.5 4 0.5H28C30.2091 0.5 32 2.29086 32 4.5V28.5C32 30.7091 30.2091 32.5 28 32.5H4C1.79086 32.5 0 30.7091 0 28.5V4.5Z"
+                ></path>
+              </mask>
+              <path
+                d="M0 4.5C0 2.29086 1.79086 0.5 4 0.5H28C30.2091 0.5 32 2.29086 32 4.5V28.5C32 30.7091 30.2091 32.5 28 32.5H4C1.79086 32.5 0 30.7091 0 28.5V4.5Z"
+                fill="#F7EFFF"></path>
+              <path
+                d="M0 0.5H32H0ZM34 28.5C34 31.8137 31.3137 34.5 28 34.5H6C2.68629 34.5 0 31.8137 0 28.5C0 29.6046 1.79086 30.5 4 30.5H28C29.1046 30.5 30 29.6046 30 28.5H34ZM0 32.5V0.5V32.5ZM28 0.5C31.3137 0.5 34 3.18629 34 6.5V28.5C34 31.8137 31.3137 34.5 28 34.5V30.5C29.1046 30.5 30 29.6046 30 28.5V4.5C30 2.29086 29.1046 0.5 28 0.5Z"
+                fill="#8B44FF"
+                mask="url(#path-1-outside-1_2021_2945)"></path>
+              <path
+                d="M26 10.5C26 9.4 25.1 8.5 24 8.5H8C6.9 8.5 6 9.4 6 10.5V22.5C6 23.6 6.9 24.5 8 24.5H24C25.1 24.5 26 23.6 26 22.5V10.5ZM24 10.5L16 15.5L8 10.5H24ZM24 22.5H8V12.5L16 17.5L24 12.5V22.5Z"
+                fill="black"></path>
+            </svg>
+
+            <a href="mailto:flexflow@gmail.com" class="text-sm font-medium"
+              >flexflow@gmail.com</a
+            >
+          </li>
         </ul>
       </div>
-      <div class="mb-8 text-center lg:col-3 lg:mb-0 lg:mt-0 lg:text-right">
-        <Social source={social.main} className="social-icons" />
+      <div class="col-span-12 md:col-span-9">
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+          {
+            footer.map((f) => (
+              <div>
+                <h6 class="text-lg font-bold">{f.name}</h6>
+                {f.hasChildren && (
+                  <ul class="footer-links">
+                    {f.children.map((c) => (
+                      <li>
+                        <a href={c.url} class="text-sm">
+                          {c.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))
+          }
+
+          <div class="md:col-span-2">
+            <h6 class="text-lg font-bold">Subscribe newsletter</h6>
+            <p class="text-sm mt-5">
+              Stay informed and up-to-date with the latest news and updates from
+              our company by subscribing to our newsletter.
+            </p>
+            <div
+              class="flex justify-between w-full max-w-[380px] border bg-white rounded-full overflow-hidden mt-8 p-1"
+            >
+              <input
+                type="email"
+                placeholder="Enter your email"
+                name="email"
+                autocomplete="email"
+                class="border-none w-full text-sm focus:ring-0 py-3 px-4"
+              />
+              <button
+                class="bg-primary text-white flex items-center gap-x-2 py-2 px-4 rounded-full"
+              >
+                <span class="text-sm font-medium px-2">Subscribe</span>
+                <span>
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M4.5 13.5L13.5 4.5M13.5 4.5H6.1875M13.5 4.5V11.8125"
+                      stroke="white"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="border-t border-border py-7">
-    <div class="container text-center text-light">
-      <p set:html={markdownify(config.params.copyright)} />
+
+  <!-- bottom -->
+  <div class="container">
+    <hr class="bg-red-500" />
+    <div
+      class="flex justify-between md:items-center flex-col md:flex-row py-6 gap-5"
+    >
+      <span class="text-sm font-medium"
+        >© 2024 Design and Developed by<a
+          href="https://themefisher.com/"
+          target="_blank"
+          class="underline"
+        >
+          Themefisher</a
+        ></span
+      >
+      <ul class="flex items-center gap-x-2 text-dark">
+        <li>
+          <a
+            href="https://www.facebook.com/"
+            target="_blank"
+            aria-label="Facebook"
+          >
+            <svg
+              width="32"
+              height="33"
+              viewBox="0 0 32 33"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <mask id="path-1-inside-1_2021_2999" fill="white">
+                <path
+                  d="M0 16.5C0 7.66344 7.16344 0.5 16 0.5C24.8366 0.5 32 7.66344 32 16.5C32 25.3366 24.8366 32.5 16 32.5C7.16344 32.5 0 25.3366 0 16.5Z"
+                ></path>
+              </mask>
+              <path
+                d="M0 16.5C0 7.66344 7.16344 0.5 16 0.5C24.8366 0.5 32 7.66344 32 16.5C32 25.3366 24.8366 32.5 16 32.5C7.16344 32.5 0 25.3366 0 16.5Z"
+                fill="#E9FFEC"></path>
+              <path
+                d="M0 0.5H32H0ZM34 17.5C34 26.8888 26.3888 34.5 17 34.5C7.61116 34.5 0 26.8888 0 17.5V16.5C0 24.232 7.16344 30.5 16 30.5C23.732 30.5 30 24.232 30 16.5L34 17.5ZM0 32.5V0.5V32.5ZM17 0.5C26.3888 0.5 34 8.11116 34 17.5C34 26.8888 26.3888 34.5 17 34.5L16 30.5C23.732 30.5 30 24.232 30 16.5C30 7.66344 23.732 0.5 16 0.5H17Z"
+                fill="#3DC02A"
+                mask="url(#path-1-inside-1_2021_2999)"></path>
+              <g clip-path="url(#clip0_2021_2999)">
+                <path
+                  d="M13.7869 23.5V16.9308H12V14.5656H13.7869V12.5454C13.7869 10.9578 14.8425 9.5 17.2747 9.5C18.2595 9.5 18.9877 9.59177 18.9877 9.59177L18.9303 11.8005C18.9303 11.8005 18.1876 11.7935 17.3772 11.7935C16.5002 11.7935 16.3596 12.1864 16.3596 12.8385V14.5656H19L18.8851 16.9308H16.3596V23.5H13.7869Z"
+                  fill="black"></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_2021_2999">
+                  <rect
+                    width="7"
+                    height="14"
+                    fill="white"
+                    transform="translate(12 9.5)"></rect>
+                </clipPath>
+              </defs>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.x.com/" target="_blank" aria-label="X">
+            <svg
+              width="32"
+              height="33"
+              viewBox="0 0 32 33"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <mask id="path-1-inside-1_2021_2993" fill="white">
+                <path
+                  d="M0 16.5C0 7.66344 7.16344 0.5 16 0.5C24.8366 0.5 32 7.66344 32 16.5C32 25.3366 24.8366 32.5 16 32.5C7.16344 32.5 0 25.3366 0 16.5Z"
+                ></path>
+              </mask>
+              <path
+                d="M0 16.5C0 7.66344 7.16344 0.5 16 0.5C24.8366 0.5 32 7.66344 32 16.5C32 25.3366 24.8366 32.5 16 32.5C7.16344 32.5 0 25.3366 0 16.5Z"
+                fill="#FFFBEE"></path>
+              <path
+                d="M0 0.5H32H0ZM34 17.5C34 26.8888 26.3888 34.5 17 34.5C7.61116 34.5 0 26.8888 0 17.5V16.5C0 24.232 7.16344 30.5 16 30.5C23.732 30.5 30 24.232 30 16.5L34 17.5ZM0 32.5V0.5V32.5ZM17 0.5C26.3888 0.5 34 8.11116 34 17.5C34 26.8888 26.3888 34.5 17 34.5L16 30.5C23.732 30.5 30 24.232 30 16.5C30 7.66344 23.732 0.5 16 0.5H17Z"
+                fill="#FBC417"
+                mask="url(#path-1-inside-1_2021_2993)"></path>
+              <path
+                d="M22.6615 11.9621C22.1622 12.1832 21.6326 12.3284 21.0903 12.3927C21.6552 12.0543 22.0889 11.5183 22.2931 10.8797C21.7561 11.1983 21.1687 11.4227 20.556 11.5434C20.057 11.0119 19.3461 10.6797 18.5593 10.6797C17.0486 10.6797 15.8238 11.9042 15.8238 13.4145C15.8238 13.6289 15.848 13.8376 15.8946 14.0378C13.6211 13.9237 11.6055 12.8349 10.2563 11.1803C10.0209 11.5842 9.88599 12.0541 9.88599 12.5552C9.88599 13.5041 10.369 14.3411 11.1029 14.8316C10.6685 14.818 10.2437 14.7007 9.86385 14.4895C9.8637 14.5009 9.8637 14.5124 9.8637 14.5239C9.8637 15.849 10.8066 16.9543 12.058 17.2056C11.6551 17.3151 11.2326 17.3311 10.8227 17.2525C11.1707 18.339 12.181 19.1296 13.378 19.1518C12.4418 19.8853 11.2622 20.3225 9.98068 20.3225C9.75984 20.3225 9.54214 20.3095 9.32812 20.2843C10.5387 21.0603 11.9766 21.513 13.5214 21.513C18.553 21.513 21.3044 17.3457 21.3044 13.7317C21.3044 13.613 21.3018 13.4951 21.2965 13.3778C21.832 12.9908 22.2942 12.5114 22.6615 11.9621Z"
+                fill="black"></path>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.linkedin.com/"
+            target="_blank"
+            aria-label="linkedin"
+          >
+            <svg
+              width="32"
+              height="33"
+              viewBox="0 0 32 33"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <mask id="path-1-inside-1_2021_2987" fill="white">
+                <path
+                  d="M0 16.5C0 7.66344 7.16344 0.5 16 0.5C24.8366 0.5 32 7.66344 32 16.5C32 25.3366 24.8366 32.5 16 32.5C7.16344 32.5 0 25.3366 0 16.5Z"
+                ></path>
+              </mask>
+              <path
+                d="M0 16.5C0 7.66344 7.16344 0.5 16 0.5C24.8366 0.5 32 7.66344 32 16.5C32 25.3366 24.8366 32.5 16 32.5C7.16344 32.5 0 25.3366 0 16.5Z"
+                fill="#EAFBFF"></path>
+              <path
+                d="M0 0.5H32H0ZM34 17.5C34 26.8888 26.3888 34.5 17 34.5C7.61116 34.5 0 26.8888 0 17.5V16.5C0 24.232 7.16344 30.5 16 30.5C23.732 30.5 30 24.232 30 16.5L34 17.5ZM0 32.5V0.5V32.5ZM17 0.5C26.3888 0.5 34 8.11116 34 17.5C34 26.8888 26.3888 34.5 17 34.5L16 30.5C23.732 30.5 30 24.232 30 16.5C30 7.66344 23.732 0.5 16 0.5H17Z"
+                fill="#27C8E8"
+                mask="url(#path-1-inside-1_2021_2987)"></path>
+              <g clip-path="url(#clip0_2021_2987)">
+                <path
+                  d="M12.3632 22.5026V13.9564H9.50459V22.5026H12.3632ZM10.9343 12.7889C11.9311 12.7889 12.5516 12.1326 12.5516 11.3126C12.533 10.474 11.9311 9.83594 10.9532 9.83594C9.97536 9.83594 9.33594 10.474 9.33594 11.3126C9.33594 12.1327 9.95627 12.7889 10.9156 12.7889H10.9342H10.9343ZM13.9454 22.5026H16.804V17.73C16.804 17.4746 16.8226 17.2194 16.898 17.0368C17.1047 16.5265 17.575 15.998 18.3647 15.998C19.3991 15.998 19.8129 16.7817 19.8129 17.9305V22.5026H22.6713V17.6023C22.6713 14.9772 21.2611 13.7558 19.3803 13.7558C17.8382 13.7558 17.1611 14.6123 16.785 15.1957H16.804V13.9563H13.9455C13.983 14.7582 13.9455 22.5024 13.9455 22.5024L13.9454 22.5026Z"
+                  fill="black"></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_2021_2987">
+                  <rect
+                    width="13.3333"
+                    height="12.6667"
+                    fill="white"
+                    transform="translate(9.33594 9.83594)"></rect>
+                </clipPath>
+              </defs>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://telegram.org/" target="_blank" aria-label="telegram">
+            <svg
+              width="32"
+              height="33"
+              viewBox="0 0 32 33"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <mask id="path-1-inside-1_2021_3005" fill="white">
+                <path
+                  d="M0 16.5C0 7.66344 7.16344 0.5 16 0.5C24.8366 0.5 32 7.66344 32 16.5C32 25.3366 24.8366 32.5 16 32.5C7.16344 32.5 0 25.3366 0 16.5Z"
+                ></path>
+              </mask>
+              <path
+                d="M0 16.5C0 7.66344 7.16344 0.5 16 0.5C24.8366 0.5 32 7.66344 32 16.5C32 25.3366 24.8366 32.5 16 32.5C7.16344 32.5 0 25.3366 0 16.5Z"
+                fill="#F7EFFF"></path>
+              <path
+                d="M0 0.5H32H0ZM34 17.5C34 26.8888 26.3888 34.5 17 34.5C7.61116 34.5 0 26.8888 0 17.5V16.5C0 24.232 7.16344 30.5 16 30.5C23.732 30.5 30 24.232 30 16.5L34 17.5ZM0 32.5V0.5V32.5ZM17 0.5C26.3888 0.5 34 8.11116 34 17.5C34 26.8888 26.3888 34.5 17 34.5L16 30.5C23.732 30.5 30 24.232 30 16.5C30 7.66344 23.732 0.5 16 0.5H17Z"
+                fill="#8B44FF"
+                mask="url(#path-1-inside-1_2021_3005)"></path>
+              <path
+                d="M21.2399 12.1566C21.3334 11.5525 20.7591 11.0757 20.2219 11.3115L9.52361 16.0086C9.13842 16.1778 9.1666 16.7612 9.5661 16.8884L11.7724 17.591C12.1934 17.7251 12.6494 17.6558 13.0171 17.4017L17.9912 13.9652C18.1412 13.8616 18.3047 14.0748 18.1766 14.207L14.5961 17.8985C14.2488 18.2566 14.3177 18.8634 14.7355 19.1254L18.7442 21.6392C19.1938 21.9212 19.7723 21.6379 19.8564 21.0946L21.2399 12.1566Z"
+                fill="black"></path>
+            </svg>
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
 </footer>

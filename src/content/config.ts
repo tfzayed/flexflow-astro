@@ -7,7 +7,9 @@ const blogCollection = defineCollection({
     meta_title: z.string().optional(),
     description: z.string().optional(),
     date: z.date().optional(),
+    badge: z.string().optional(),
     image: z.string().optional(),
+    button: z.string().optional(),
     author: z.string().default("Admin"),
     categories: z.array(z.string()).default(["others"]),
     tags: z.array(z.string()).default(["others"]),
@@ -45,6 +47,7 @@ const pagesCollection = defineCollection({
     meta_title: z.string().optional(),
     description: z.string().optional(),
     image: z.string().optional(),
+    badge: z.string().optional(),
     draft: z.boolean().optional(),
   }),
 });

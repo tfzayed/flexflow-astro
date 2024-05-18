@@ -1,10 +1,14 @@
 ---
+import BlogCard from "@/components/BlogCard.astro";
+import Faq from "@/components/Faq.astro";
 import Features from "@/components/feature/Features.astro";
 import HowItWorksTab from "@/components/how-it-works/HowItWorksTab";
 import IntegrationSection from "@/components/integration/IntegrationSection.astro";
 import PricingSection from "@/components/pricing/PricingSection.astro";
 import Base from "@/layouts/Base.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
 import { markdownify } from "@/lib/utils/textConverter";
+import CallToAction from "@/partials/CallToAction.astro";
 import Testimonial from "@/partials/Testimonial.astro";
 import type { Button, Feature } from "@/types";
 import { getEntry } from "astro:content";
@@ -37,9 +41,12 @@ interface Homepage {
   };
   feature: Feature;
 }
+const BLOG_FOLDER = "blog";
 
 const homepage = await getEntry("homepage", "-index");
 const testimonial = await getEntry("sections", "testimonial");
+const postIndex = await getEntry(BLOG_FOLDER, "-index");
+const posts = await getSinglePage(BLOG_FOLDER);
 
 const call_to_action = await getEntry("sections", "call-to-action");
 const { banner, achievement, how_it_work, feature }: Homepage = homepage.data;
@@ -183,5 +190,32 @@ const { banner, achievement, how_it_work, feature }: Homepage = homepage.data;
   <Testimonial testimonial={testimonial} />
   <IntegrationSection />
   <PricingSection />
-  <!-- <CallToAction call_to_action={call_to_action} /> -->
+
+  <!-- blog -->
+  <section class="section">
+    <div class="container">
+      <div class="mx-auto text-center mb-6 lg:col-8">
+        <span
+          class="bg-secondary/15 px-5 py-1 rounded-full text-dark text-base-sm inline-block mb-3"
+          set:html={markdownify(postIndex.data.badge!)}
+        />
+        <h2 class="mb-10" set:html={markdownify(postIndex.data.title!)} />
+      </div>
+      <!--prettier-ignore-->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 justify-center gap-5 md:gap-8">
+       {posts.slice(0,3).map(post =>(
+        <BlogCard post={post}/>
+       ))}
+      </div>
+      <div class="flex justify-center w-full mt-12">
+        <a href="/blog" class="btn btn-primary text-sm font-medium"
+          >See All Post</a
+        >
+      </div>
+    </div>
+  </section>
+
+  <!-- faq -->
+  <Faq />
+  <CallToAction call_to_action={call_to_action} />
 </Base>

@@ -8,6 +8,7 @@ import Header from "@/partials/Header.astro";
 import "@/styles/main.scss";
 import { AstroFont } from "astro-font";
 import { ViewTransitions } from "astro:transitions";
+import "aos/dist/aos.css";
 
 // font families
 const pf = theme.fonts.font_family.primary;
@@ -164,7 +165,6 @@ const { title, meta_title, description, image, noindex, canonical } =
 
     <script>
       import AOS from "aos";
-      import "aos/dist/aos.css";
 
       function aosInit() {
         AOS.init({

@@ -1,0 +1,54 @@
+---
+import { markdownify } from "@/lib/utils/textConverter";
+import { getEntry } from "astro:content";
+
+const pageIndex = await getEntry("sections", "faq");
+const { title, badge, content, faqs } = pageIndex.data;
+---
+
+<section class="section">
+  <div class="px-4">
+    <div class="container-lg card-lg bg-secondary/15 border-secondary">
+      <div class="section-inner text-center container mx-auto">
+        <div class="mb-12">
+          <span
+            class="bg-secondary/15 px-5 py-1 rounded-full text-base-sm text-dark inline-block mb-3"
+            set:html={markdownify(badge)}
+          />
+
+          <h2 class="mb-4" set:html={markdownify(title)} />
+
+          <p
+            class="mb-7 text-dark/75 lg:col-8 mx-auto"
+            set:html={markdownify(content)}
+          />
+        </div>
+        <!--prettier-ignore-->
+        <div class="grid gap-y-5">
+          {faqs.map((faq:any) => (
+            <div class="accordion">
+               <button class="accordion-header" data-accordion>
+                {faq.header}
+                <svg
+                  class="accordion-icon"
+                  x="0px"
+                  y="0px"
+                  viewBox="0 0 512 512"
+                  xml:space="preserve"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M505.755,123.592c-8.341-8.341-21.824-8.341-30.165,0L256.005,343.176L36.421,123.592c-8.341-8.341-21.824-8.341-30.165,0 s-8.341,21.824,0,30.165l234.667,234.667c4.16,4.16,9.621,6.251,15.083,6.251c5.462,0,10.923-2.091,15.083-6.251l234.667-234.667 C514.096,145.416,514.096,131.933,505.755,123.592z"
+                  ></path>
+                </svg>
+              </button>
+              <div class="accordion-content">
+                <p set:html={markdownify(faq.content)}></p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

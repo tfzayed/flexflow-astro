@@ -1,46 +1,52 @@
 ---
-import ImageMod from "@/components/ImageMod.astro";
 import { markdownify } from "@/lib/utils/textConverter";
+
 const { call_to_action } = Astro.props;
+const { enable, title, image, description, button } = call_to_action.data;
 ---
 
 {
-  call_to_action.data.enable && (
-    <section class="mb-28">
-      <div class="container">
-        <div class="rounded-xl bg-theme-light px-4 py-16  xl:p-20">
-          <div class="row items-center justify-between">
-            <div class="mb-10 md:col-5 lg:col-4 md:order-2 md:mb-0">
-              <ImageMod
-                class="w-full"
-                src={call_to_action.data.image}
-                width={392}
-                height={390}
-                alt="cta-image"
-                format="webp"
+  enable && (
+    <section class="relative">
+      <div class="px-4">
+        <div class="container-lg card-lg bg-[#F7EFFF] border-primary">
+          <div class="section-inner container mx-auto flex lg:flex-row flex-col items-center gap-x-8 xl:gap-x-20 gap-y-8">
+            <div
+              class="card-lg bg-primary/15 border-primary w-full sm:w-2/3 lg:w-auto aos-init aos-animate"
+              data-aos="zoom-out-sm"
+            >
+              <img
+                src={image}
+                alt="Call to action"
+                width={486}
+                height={348}
+                class="w-full select-none"
               />
             </div>
-            <div class="md:col-7 md:order-1">
+            <div>
               <h2
-                set:html={markdownify(call_to_action.data.title)}
-                class="mb-2"
+                data-aos="fade-right-sm"
+                data-aos-delay="50"
+                class="aos-init aos-animate"
+                set:html={markdownify(title)}
               />
               <p
-                set:html={markdownify(call_to_action.data.description)}
-                class="mb-6"
+                class="mt-4 mb-8 aos-init aos-animate"
+                data-aos="fade-right-sm"
+                data-aos-delay="100"
+                set:html={markdownify(description)}
               />
-              {call_to_action.data.button.enable && (
-                <a
-                  class="btn btn-primary"
-                  href={call_to_action.data.button.link}
-                >
-                  {call_to_action.data.button.label}
+              {button.enable && (
+                <a href={button.link} class="btn btn-primary">
+                  {button.label}
                 </a>
               )}
             </div>
           </div>
         </div>
       </div>
+
+      <div class="absolute inset-x-0 bottom-0 bg-theme-light h-1/2 -z-10" />
     </section>
   )
 }

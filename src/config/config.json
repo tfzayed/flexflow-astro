@@ -23,7 +23,16 @@
 
   "params": {
     "contact_form_action": "#",
-    "copyright": "Designed And Developed by [Zeon Studio](https://zeon.studio)"
+    "copyright": "© 2024 Design and Developed by [Themefisher](https://themefisher.com)",
+    "footer_content": "It is a long established fact that reader will be distracted",
+    "subscribe": {
+      "content": "Join 75,000+ Growing Business That Use Copper To Their Brand",
+      "button": {
+        "enable": true,
+        "label": "Get Started With Us",
+        "href": "#"
+      }
+    }
   },
 
   "navigation_button": {
