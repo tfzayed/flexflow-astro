@@ -3,14 +3,17 @@ import Player from "@/components/about/Player.astro";
 import StoryCard from "@/components/about/StoryCard.astro";
 import VisionTab from "@/components/about/VisionTab";
 import Card from "@/components/Card.astro";
+import Faq from "@/components/Faq.astro";
 import Base from "@/layouts/Base.astro";
 import { markdownify } from "@/lib/utils/textConverter";
+import CallToAction from "@/partials/CallToAction.astro";
 import { getEntry } from "astro:content";
 
 const about = await getEntry("about", "-index");
 const { Content } = await about.render();
-const { title, description, meta_title, video, badge, story, value } =
+const { title, description, meta_title, video, badge, story, value, team } =
   about.data;
+const call_to_action = await getEntry("sections", "call-to-action");
 ---
 
 <Base title={title} meta_title={meta_title} description={description}>
@@ -105,5 +108,55 @@ const { title, description, meta_title, video, badge, story, value } =
     <VisionTab visions={value} client:load />
   </section>
 
-  
+  <!-- team -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center mb-14">
+        <span
+          class="bg-secondary/20 px-5 py-1 rounded-full text-base-sm text-dark inline-block mb-3"
+          data-aos="fade-up-sm"
+          set:html={markdownify(team.badge)}
+        />
+
+        <h2
+          class="mb-4"
+          data-aos="fade-up-sm"
+          data-aos-delay="50"
+          set:html={markdownify(team.title)}
+        />
+      </div>
+
+      <div
+        class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
+        data-aos="fade-up-sm"
+      >
+        {
+          team.members.map((member) => (
+            <div class="card colorize-hover-card p-5 shadow">
+              <div class="px-20 pt-10 colorize-hover-card-icon rounded-md">
+                <img
+                  src={member.image}
+                  alt="Team Profile Image"
+                  width="370"
+                  height="302"
+                  draggable="false"
+                  class="w-full select-none"
+                />
+              </div>
+              <div class="mt-6 text-center">
+                <h5 class="mb-2" set:html={markdownify(member.name)} />
+                <span
+                  class="text-sm text-text"
+                  set:html={markdownify(member.designation)}
+                />
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <Faq />
+  <CallToAction call_to_action={call_to_action} />
 </Base>

@@ -58,4 +58,27 @@ value:
         icon: "FaHandsHolding"
         image: "/images/feature-thumb-1.png"
         content: "We relentlessly pursue innovation to harness AI's power, revolutionizing copywriting. Our dedication delivers exceptional, cutting-edge solutions surpassing traditional approaches. cutting-edge solutions that surpass traditional approaches."
+
+team:
+  badge: "Our Team"
+  title: "Meet our Team"
+  members:
+    - name: "Darrell Steward"
+      image: "/images/person-1.png"
+      designation: "Project Manager"
+    - name: "Jacob Jones"
+      image: "/images/person-2.png"
+      designation: "Content Writer"
+    - name: "Darlene Robertson"
+      image: "/images/person-3.png"
+      designation: "Director Technology"
+    - name: "Courtney Henry"
+      image: "/images/person-4.png"
+      designation: "Vice President"
+    - name: "Leslie Alexander"
+      image: "/images/person-5.png"
+      designation: "Senior Software Engineer"
+    - name: "Savannah Nguyen"
+      image: "/images/person-6.png"
+      designation: "Architect"
 ---

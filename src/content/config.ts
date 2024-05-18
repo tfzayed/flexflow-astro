@@ -105,6 +105,17 @@ const aboutCollection = defineCollection({
         }),
       })
       .optional(),
+    team: z.object({
+      badge: z.string(),
+      title: z.string(),
+      members: z.array(
+        z.object({
+          name: z.string(),
+          image: z.string(),
+          designation: z.string(),
+        }),
+      ),
+    }),
   }),
 });
 
