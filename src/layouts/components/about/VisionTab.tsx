@@ -8,7 +8,7 @@ type TabItem = CollectionEntry<"about">["data"]["value"];
 
 const VisionTab = ({ visions }: { visions: TabItem }) => {
   const { selectedTab, onChange, selectedTabIndex, setSelectedTab } = useTabs({
-    tabs: visions!.inspiration.visions,
+    tabs: visions?.inspiration?.visions,
     initialTabId: 0,
     onChange: (index: number) => setSelectedTab(index),
   });

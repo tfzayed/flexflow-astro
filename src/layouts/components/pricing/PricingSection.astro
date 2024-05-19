@@ -6,10 +6,12 @@ import { FaCheck } from "react-icons/fa6";
 
 const pricing = await getEntry("pricing", "-index");
 
+const { design } = Astro.props;
+
 const { title, badge, features, plans } = pricing.data as PricingSection;
 ---
 
-<section class="section">
+<section class={`${design}`}>
   <div class="container">
     <div class="mx-auto text-center mb-6 lg:col-8">
       <span

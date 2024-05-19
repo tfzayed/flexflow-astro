@@ -1,4 +1,6 @@
 ---
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+
 type Pagination = {
   section?: string;
   currentPage?: number;
@@ -19,7 +21,7 @@ for (let i = 1; i <= totalPages; i++) {
 {
   totalPages > 1 && (
     <nav
-      class="flex items-center justify-center space-x-3"
+      class="flex items-center justify-between w-full mt-12"
       aria-label="Pagination"
     >
       {/* previous */}
@@ -30,103 +32,27 @@ for (let i = 1; i <= totalPages; i++) {
               ? `${section ? "/" + section : "/"}`
               : `${section ? "/" + section : ""}/page/${currentPage - 1}`
           }
-          class="rounded px-2 py-1.5 text-dark hover:bg-theme-light  "
+          class="btn btn-primary bg-primary/15 text-primary text-sm font-medium flex items-center"
         >
-          <span class="sr-only">Previous</span>
-          <svg
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            aria-hidden="true"
-            height="30"
-            width="30"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-              clip-rule="evenodd"
-            />
-          </svg>
+          <FaChevronLeft className="mr-2" /> Previous
         </a>
       ) : (
-        <span class="rounded px-2 py-1.5 text-light">
-          <span class="sr-only">Previous</span>
-          <svg
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            aria-hidden="true"
-            height="30"
-            width="30"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-              clip-rule="evenodd"
-            />
-          </svg>
+        <span class="btn btn-primary bg-primary/15 text-sm font-medium text-light flex items-center">
+          <FaChevronLeft className="mr-2" /> Previous
         </span>
-      )}
-
-      {/* page index */}
-      {pageList.map((pagination, i) =>
-        pagination === currentPage ? (
-          <span
-            aria-current="page"
-            class="rounded bg-primary px-4 py-2 text-white  "
-          >
-            {pagination}
-          </span>
-        ) : (
-          <a
-            href={
-              i === 0
-                ? `${section ? "/" + section : "/"}`
-                : `${section ? "/" + section : ""}/page/${pagination}`
-            }
-            aria-current="page"
-            class="rounded px-4 py-2 text-dark hover:bg-theme-light  "
-          >
-            {pagination}
-          </a>
-        ),
       )}
 
       {/* next page */}
       {hasNextPage ? (
         <a
           href={`${section ? "/" + section : ""}/page/${currentPage + 1}`}
-          class="rounded px-2 py-1.5 text-dark hover:bg-theme-light  "
+          class="btn btn-primary text-sm font-medium flex items-center"
         >
-          <span class="sr-only">Next</span>
-          <svg
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            aria-hidden="true"
-            height="30"
-            width="30"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-              clip-rule="evenodd"
-            />
-          </svg>
+          Next <FaChevronRight className="ml-2" />
         </a>
       ) : (
-        <span class="rounded px-2 py-1.5 text-light">
-          <span class="sr-only">Next</span>
-          <svg
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            aria-hidden="true"
-            height="30"
-            width="30"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-              clip-rule="evenodd"
-            />
-          </svg>
+        <span class="btn btn-primary text-sm font-medium text-light flex items-center">
+          Next <FaChevronRight className="ml-2" />
         </span>
       )}
     </nav>

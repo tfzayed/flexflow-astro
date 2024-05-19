@@ -1,0 +1,143 @@
+---
+import Faq from "@/components/Faq.astro";
+import PricingSection from "@/components/pricing/PricingSection.astro";
+import DynamicIcon from "@/helpers/DynamicIcon";
+import Base from "@/layouts/Base.astro";
+import Testimonial from "@/partials/Testimonial.astro";
+import { getEntry } from "astro:content";
+
+const priceIndex = await getEntry("pricing", "-index");
+const { title, badge, features, plans, pricing_table_data } = priceIndex.data;
+const testimonial = await getEntry("sections", "testimonial");
+---
+
+<Base>
+  <PricingSection design={"section-hero mb-24 xl:mb-28"} />
+
+  <!--Pricing Table-->
+  <section class="section">
+    <div class="container-lg">
+      <div
+        class="card border-secondary border-t border-l overflow-hidden px-10 md:px-0"
+      >
+        <table class="text-left pricing-table">
+          <thead>
+            <tr>
+              <th>{pricing_table_data!.tableHead.name}</th>
+              <th data-label={pricing_table_data!.tableHead.free}>
+                <span>{pricing_table_data!.tableHead.free}</span>
+              </th>
+              <th data-label={pricing_table_data!.tableHead.basic}>
+                <span>{pricing_table_data!.tableHead.basic}</span>
+              </th>
+              <th data-label={pricing_table_data!.tableHead.pro}>
+                <span>{pricing_table_data!.tableHead.pro}</span>
+              </th>
+              <th data-label={pricing_table_data!.tableHead.premium}>
+                <span>{pricing_table_data!.tableHead.premium}</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              pricing_table_data!.tableBody.map((tbody) => (
+                <tr>
+                  <td data-label>
+                    <span>
+                      <i class="text-primary fa-solid fa-circle-question" />
+                    </span>
+                    {tbody.name}
+                  </td>
+
+                  <td data-label="Basic">
+                    {tbody.free === "FaCheck" || tbody.free === "FaXmark" ? (
+                      <DynamicIcon
+                        icon={tbody.free}
+                        className={`${tbody.free === "FaCheck" ? "text-green-500" : "text-red-500"}`}
+                      />
+                    ) : (
+                      tbody.free
+                    )}
+                  </td>
+
+                  <td data-label="Standard">
+                    {tbody.basic === "FaCheck" || tbody.basic === "FaXmark" ? (
+                      <DynamicIcon
+                        icon={tbody.basic}
+                        className={`${tbody.basic === "FaCheck" ? "text-green-500" : "text-red-500"}`}
+                      />
+                    ) : (
+                      tbody.basic
+                    )}
+                  </td>
+
+                  <td data-label="Executive">
+                    {tbody.pro === "FaCheck" || tbody.pro === "FaXmark" ? (
+                      <DynamicIcon
+                        icon={tbody.pro}
+                        className={`${tbody.pro === "FaCheck" ? "text-green-500" : "text-red-500"}`}
+                      />
+                    ) : (
+                      tbody.pro
+                    )}
+                  </td>
+
+                  <td data-label="Premium">
+                    {tbody.premium === "FaCheck" ||
+                    tbody.premium === "FaXmark" ? (
+                      <DynamicIcon
+                        icon={tbody.premium}
+                        className={`${tbody.premium === "FaCheck" ? "text-green-500" : "text-red-500"}`}
+                      />
+                    ) : (
+                      tbody.premium
+                    )}
+                  </td>
+                </tr>
+              ))
+            }
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>
+                <span>
+                  <i class="text-primary fa-solid fa-circle-question"></i>
+                </span>
+                Get Started
+              </td>
+              <td class="!py-6 md:py-0" data-label="Basic">
+                <a href="#" class="btn-sm py-3 inline-block btn-primary my-4"
+                  >Choose</a
+                >
+              </td>
+              <td class="!py-6 md:py-0" data-label="Standard">
+                <a
+                  href="#"
+                  class="btn-sm py-3 inline-block btn-outline-primary my-4"
+                  >Choose</a
+                >
+              </td>
+              <td class="!py-6 md:py-0" data-label="Executive">
+                <a
+                  href="#"
+                  class="btn-sm py-3 inline-block btn-outline-primary my-4"
+                  >Choose</a
+                >
+              </td>
+              <td class="!py-6 md:py-0" data-label="Executive">
+                <a
+                  href="#"
+                  class="btn-sm py-3 inline-block btn-outline-primary my-4"
+                  >Choose</a
+                >
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <Testimonial testimonial={testimonial} />
+  <Faq />
+</Base>

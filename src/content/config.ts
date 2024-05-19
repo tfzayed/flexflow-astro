@@ -119,10 +119,63 @@ const aboutCollection = defineCollection({
   }),
 });
 
+const pricingCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    badge: z.string().optional(),
+    features: z.array(z.string()).optional(),
+    plans: z.array(
+      z.object({
+        label: z.string(),
+        id: z.string(),
+        packs: z.array(
+          z.object({
+            type: z.string(),
+            icon: z.string(),
+            price: z.string(),
+            compound: z.string(),
+            features: z.array(z.string()),
+          }),
+        ),
+      }),
+    ),
+    pricing_table_data: z
+      .object({
+        tableHead: z.object({
+          name: z.string(),
+          free: z.string(),
+          basic: z.string(),
+          pro: z.string(),
+          premium: z.string(),
+        }),
+
+        tableBody: z.array(
+          z.object({
+            name: z.string(),
+            free: z.string(),
+            basic: z.string(),
+            pro: z.string(),
+            premium: z.string(),
+          }),
+        ),
+
+        tableFooter: z.object({
+          name: z.string(),
+          free: z.string(),
+          basic: z.string(),
+          pro: z.string(),
+          premium: z.string(),
+        }),
+      })
+      .optional(),
+  }),
+});
+
 // Export collections
 export const collections = {
   blog: blogCollection,
   authors: authorsCollection,
   pages: pagesCollection,
   about: aboutCollection,
+  pricing: pricingCollection,
 };

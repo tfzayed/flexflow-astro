@@ -901,7 +901,8 @@ input[type="checkbox"] {
     }
   }
 
-  tbody {
+  tbody,
+  tfoot {
     tr {
       @apply flex flex-col items-start w-full md:table-row;
 
