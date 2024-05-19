@@ -1,7 +1,7 @@
 ---
 import { markdownify } from "@/lib/utils/textConverter";
 import type { Testimonial } from "@/types";
-import { FaChevronLeft,FaChevronRight } from "react-icons/fa6";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 const { testimonial } = Astro.props;
 
 const n = 1;
@@ -101,8 +101,6 @@ const { enable, title, badge, testimonials } = testimonial.data as Testimonial;
         nextEl: ".testimonial-swiper-next",
         prevEl: ".testimonial-swiper-prev",
       },
-
-     
     });
   });
 </script>

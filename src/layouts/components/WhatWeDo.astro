@@ -1,14 +1,11 @@
 ---
 import DynamicIcon from "@/helpers/DynamicIcon";
 import { markdownify } from "@/lib/utils/textConverter";
-import type { Feature, SingleFeature } from "@/types";
+import type { SingleFeature } from "@/types";
+import { getEntry } from "astro:content";
 
-interface Props {
-  feature: Feature;
-}
-
-const { feature } = Astro.props as Props;
-const { title, badge, content, features, insight } = feature;
+const what_we_do = await getEntry("sections", "what-we-do");
+const { title, badge, content, features, insight } = what_we_do.data;
 ---
 
 <section>
@@ -64,7 +61,7 @@ const { title, badge, content, features, insight } = feature;
   </div>
 
   {
-    insight.map((i, index) => (
+    insight.map((i: any, index: number) => (
       <div class="section">
         <div class="container">
           <div class="row items-center justify-between gap-y-10">
@@ -78,7 +75,7 @@ const { title, badge, content, features, insight } = feature;
               <div
                 class={`grid gap-5 justify-center lg:justify-start ${index % 2 ? "grid-cols" : "sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2"}`}
               >
-                {i.insights.map((i) => (
+                {i.insights.map((i: any) => (
                   <div class="flex items-center gap-x-3 rounded-md p-3 w-full colorize-list-card">
                     <span>
                       <i class="fa-solid @@fa-icon colorize-icon text-xl" />

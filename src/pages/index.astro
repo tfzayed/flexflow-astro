@@ -1,10 +1,10 @@
 ---
 import BlogCard from "@/components/BlogCard.astro";
 import Faq from "@/components/Faq.astro";
-import Features from "@/components/feature/Features.astro";
 import HowItWorksTab from "@/components/how-it-works/HowItWorksTab";
 import IntegrationSection from "@/components/integration/IntegrationSection.astro";
 import PricingSection from "@/components/pricing/PricingSection.astro";
+import WhatWeDo from "@/components/WhatWeDo.astro";
 import Base from "@/layouts/Base.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import { markdownify } from "@/lib/utils/textConverter";
@@ -182,14 +182,13 @@ const { banner, achievement, how_it_work, feature }: Homepage = homepage.data;
     )
   }
   <!-- how it works -->
-
-  <!-- Features -->
-  {feature.enable && <Features feature={feature} />}
-  <!-- /Features -->
+  <!-- WhatWeDo -->
+  <WhatWeDo />
+  <!-- /WhatWeDo -->
 
   <Testimonial testimonial={testimonial} />
   <IntegrationSection />
-  <PricingSection design={"section"}/>
+  <PricingSection design={"section"} />
 
   <!-- blog -->
   <section class="section">

@@ -1,0 +1,128 @@
+---
+import Card from "@/components/Card.astro";
+import IntegrationSection from "@/components/integration/IntegrationSection.astro";
+import WhatWeDo from "@/components/WhatWeDo.astro";
+import Base from "@/layouts/Base.astro";
+import { markdownify } from "@/lib/utils/textConverter";
+import Testimonial from "@/partials/Testimonial.astro";
+import { getEntry } from "astro:content";
+
+const pageIndex = await getEntry("features", "-index");
+const { title, badge, description, banner, service } = pageIndex.data;
+const testimonial = await getEntry("sections", "testimonial");
+---
+
+<Base>
+  <section class="section-hero mb-24 xl:mb-28">
+    <div
+      class="flex flex-col lg:flex-row gap-x-4 gap-y-14 items-center container mx-auto w-full"
+    >
+      <div class="text-center">
+        <span
+          class="bg-white/40 px-5 py-1 rounded-full text-base-sm text-dark inline-block mb-3"
+          data-aos=""
+          set:html={markdownify(badge)}
+        />
+
+        <h1
+          class="page-heading"
+          data-aos="fade-up-sm"
+          data-aos-delay="50"
+          set:html={markdownify(title)}
+        />
+        <p
+          class="font-medium lg:col-6 mx-auto"
+          data-aos="fade-up-sm"
+          data-aos-delay="100"
+          set:html={markdownify(description)}
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="px-4">
+      <div class="container-lg rounded-lg bg-[#F7EFFF] border-primary">
+        <div
+          class="section-inner container mx-auto flex lg:flex-row flex-col items-center gap-x-8 xl:gap-x-20 gap-y-8"
+        >
+          <div class="flex-1">
+            <h2
+              data-aos="fade-right-sm"
+              data-aos-delay="50"
+              class="text-h2-sm"
+              set:html={markdownify(banner.title)}
+            />
+            <p
+              class="mt-4 mb-8"
+              data-aos="fade-right-sm"
+              data-aos-delay="100"
+              set:html={markdownify(banner.content)}
+            />
+
+            {
+              banner.button.enable && (
+                <a
+                  href={banner.button.link}
+                  class="btn btn-primary"
+                  data-aos="fade-right-sm"
+                  data-aos-delay="150"
+                >
+                  {banner.button.label}
+                </a>
+              )
+            }
+          </div>
+          <div
+            class="card-lg flex-1 bg-primary/15 border-primary w-full sm:w-2/3 lg:w-auto"
+            data-aos="zoom-out-sm"
+          >
+            <img
+              src={banner.image}
+              alt="Dashboard Image"
+              width="460"
+              height="318"
+              draggable="false"
+              class="select-none mx-auto"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section">
+      <div class="container">
+        <div class="text-center mb-11">
+          <span
+            class="bg-secondary/20 px-5 py-1 rounded-full text-base-sm text-dark inline-block mb-3"
+            data-aos="fade-up-sm"
+            set:html={markdownify(service.badge)}
+          />
+
+          <h2
+            class="mb-4"
+            data-aos="fade-up-sm"
+            data-aos-delay="50"
+            set:html={markdownify(service.title)}
+          />
+          <p
+            class="mb-7 text-dark/75 lg:col-8 px-10 mx-auto font-medium"
+            data-aos="fade-up-sm"
+            data-aos-delay="100"
+            set:html={markdownify(service.content)}
+          />
+        </div>
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
+          {service.services.map((s: any, i: number) => <Card card={s} i={i} />)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <WhatWeDo />
+
+  <Testimonial testimonial={testimonial} />
+  <IntegrationSection />
+</Base>
