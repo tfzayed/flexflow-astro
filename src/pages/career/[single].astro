@@ -1,0 +1,199 @@
+---
+import config from "@/config/config.json";
+import Base from "@/layouts/Base.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import taxonomyFilter from "@/lib/utils/taxonomyFilter";
+import { slugify } from "@/lib/utils/textConverter";
+import CallToAction from "@/partials/CallToAction.astro";
+import PageHeader from "@/partials/PageHeader.astro";
+import { getEntry } from "astro:content";
+
+export async function getStaticPaths() {
+  const allCareers = await getSinglePage("career");
+
+  const paths = allCareers.map((career) => ({
+    params: {
+      single: career.slug,
+    },
+    props: { career },
+  }));
+
+  return paths;
+}
+
+const call_to_action = await getEntry("sections", "call-to-action");
+const { sticky_header } = config.settings;
+
+const allCareers = await getSinglePage("career");
+const { career } = Astro.props;
+const { Content } = await career.render();
+const {
+  title,
+  meta_title,
+  description,
+  department,
+  details,
+  summery,
+  city,
+  duration,
+  salary,
+  image,
+} = career.data;
+
+const filterByCategories = taxonomyFilter(
+  allCareers,
+  "department",
+  slugify(department[0])
+);
+---
+
+<Base
+  title={title}
+  meta_title={meta_title}
+  description={description}
+  image={image}
+>
+  <PageHeader title={title} description={description} />
+  <section class="section mt-5 lg:mt-20">
+    <div class="container-content">
+      <div class="row space-y-10 lg:space-y-0">
+        <div class="lg:col-7 space-y-10">
+          <div class="content">
+            <Content />
+          </div>
+        </div>
+        <div class="lg:col-5">
+          <div class="bg-secondary/15 rounded-lg p-5 lg:py-8 sticky top-28">
+            <p class="text-h6 mb-2 text-dark/90 text-lg font-bold">
+              Departmentss : {title}
+            </p>
+            <p class="text-h6 mb-2 text-dark/90 text-lg font-bold">
+              Location : {city}
+            </p>
+            <p class="text-h6 mb-2 text-dark/90 text-lg font-bold">
+              Type : {duration}
+            </p>
+            <p class="text-h6 mb-2 text-dark/90 text-lg font-bold">
+              Salary : {salary}
+            </p>
+
+            <p class="mb-4 text-base-sm">
+              {summery}
+            </p>
+
+            <a
+              href="#applyForPosition"
+              class="btn btn-secondary w-full text-center">Apply For This Job</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="mt-10" id="applyForPosition">
+        <div class="flex justify-between flex-col lg:flex-row gap-9">
+          <div>
+            <h6 class="mb-6">Apply via E-mail</h6>
+            <p>
+              If you need to send us mail regarding job opportunities, please
+              write to us at flexflow@gmail.com for more information.
+            </p>
+          </div>
+          <div>
+            <h6 class="mb-6">Apply via the phone number</h6>
+            <p>
+              Apply Now Via the WhatsApp app, Send us Your Resume at +79 2589
+              63598
+            </p>
+          </div>
+        </div>
+        <form action="#" class="shadow p-9 lg:py-16 lg:px-10 rounded-lg mt-10">
+          <div class="grid lg:grid-cols-2 gap-7">
+            <div>
+              <label class="form-label" for="name">Name </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form-input"
+                required
+              />
+            </div>
+
+            <div>
+              <label class="form-label" for="email">Email </label>
+              <input
+                class="form-input"
+                type="email"
+                id="email"
+                name="email"
+                required
+              />
+            </div>
+
+            <div>
+              <label class="form-label" for="position"
+                >Applying for (job position)
+              </label>
+              <input
+                class="form-input"
+                type="text"
+                id="position"
+                name="position"
+                required
+              />
+            </div>
+
+            <div>
+              <label class="form-label" for="phone">Phone Number</label>
+              <input
+                class="form-input"
+                type="tel"
+                id="phone"
+                name="phone"
+                required
+              />
+            </div>
+
+            <div class="lg:col-span-2">
+              <label class="form-label" for="message">Message</label>
+              <textarea
+                class="form-input caret-primary"
+                id="message"
+                name="message"
+                rows="4"
+                placeholder="Your Message"
+                required></textarea>
+            </div>
+
+            <div class="lg:col-span-2">
+              <input
+                type="checkbox"
+                name="confirm-terms"
+                id="confirm-terms"
+                class="mr-2 accent-primary"
+              />
+              <div class="text-base-sm inline-block">
+                I confirm that you have read and agreed to
+                <a href="terms.html" class="font-medium text-dark"
+                  >Terms of Service</a
+                >
+                and
+                <a href="terms.html" class="font-medium text-dark"
+                  >Privacy Statement</a
+                >
+                .
+              </div>
+            </div>
+          </div>
+          <button
+            type="submit"
+            class="rounded-full px-8 py-3 lg:py-3 lg:px-10 font-medium capitalize relative text-sm hover:bg-primary/90 transition-colors mt-8 bg-primary text-white w-full"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction call_to_action={call_to_action} />
+</Base>

@@ -1020,3 +1020,26 @@ input[type="checkbox"] {
     }
   }
 }
+
+.shuffle-filter-btn {
+  &:nth-child(1n + 0) {
+    svg {
+      @apply text-secondary;
+    }
+  }
+  &:nth-child(2n + 0) {
+    svg {
+      @apply text-quaternary;
+    }
+  }
+  &:nth-child(3n + 0) {
+    svg {
+      @apply text-tertiary;
+    }
+  }
+  &:nth-child(4n + 0) {
+    svg {
+      @apply text-primary;
+    }
+  }
+}
