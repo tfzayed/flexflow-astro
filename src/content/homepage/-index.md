@@ -20,20 +20,6 @@ banner:
       - "/images/svg/company/spotify.svg"
       - "/images/svg/company/coinbase.svg"
 
-# Achievement
-achievement:
-  enable: true
-  title: "We earn trust by working efficiently"
-  achievements:
-    - title: "15+"
-      content: "Years of experience"
-    - title: "99%"
-      content: "Satisfied user"
-    - title: "600+"
-      content: "Project completed"
-    - title: "400+"
-      content: "Positive reviews"
-
 # How it works
 how_it_work:
   enable: true
@@ -52,4 +38,6 @@ how_it_work:
       icon: "/images/svg/icons/deploy.svg"
       image: "/images/dashboard.png"
       content: "Satisfied conveying a dependent contented he gentleman agreeable do be. Warrant private blushes removed."
+
+
 ---

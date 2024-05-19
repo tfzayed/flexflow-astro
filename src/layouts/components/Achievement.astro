@@ -1,0 +1,45 @@
+---
+import { markdownify } from "@/lib/utils/textConverter";
+import { getEntry } from "astro:content";
+
+const { classes } = Astro.props;
+const achievement = await getEntry("sections", "achievement");
+---
+
+{
+  achievement.data.enable && (
+    <section class="section pt-10 px-4">
+      <div class={`container-lg text-center rounded-2xl ${classes}`}>
+        <h2
+          class="mb-12 text-h3"
+          data-aos="fade-up-sm"
+          set:html={markdownify(achievement.data.title)}
+        />
+        <div
+          class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 container"
+          id="observeCountUp"
+        >
+          {achievement.data.achievements.map(
+            (a: { title: string; content: string }) => (
+              <div
+                class="flex flex-col items-center py-4 lg:py-8 card colorize-hover-card"
+                data-aos="fade-up-sm"
+                data-aos-delay="50"
+              >
+                <span
+                  class="text-h1 font-bold"
+                  id="yearOfExpCount"
+                  set:html={markdownify(a.title)}
+                />
+                <span
+                  class="text-dark font-medium"
+                  set:html={markdownify(a.content)}
+                />
+              </div>
+            ),
+          )}
+        </div>
+      </div>
+    </section>
+  )
+}

@@ -1,0 +1,205 @@
+---
+import Achievement from "@/components/Achievement.astro";
+import Card from "@/components/Card.astro";
+import CareerTab from "@/components/career/CareerTab";
+import DynamicIcon from "@/helpers/DynamicIcon";
+import Base from "@/layouts/Base.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import { getTaxonomy } from "@/lib/taxonomyParser.astro";
+import { markdownify } from "@/lib/utils/textConverter";
+import { getEntry } from "astro:content";
+
+const careerIndex = await getEntry("career", "-index");
+const { title, button, banner, benefits, value, gallery } = careerIndex.data;
+const careers = await getSinglePage("career");
+const department = await getTaxonomy("career", "department");
+---
+
+<Base>
+  <section class="section-hero mb-24 xl:mb-28">
+    <div class="text-center">
+      <h2 class="mb-10 page-heading" set:html={markdownify(title)} />
+      {
+        button.enable && (
+          <a href={button.link} class="btn btn-primary mb-10">
+            {button.label}
+          </a>
+        )
+      }
+      <div
+        class="container grid lg:grid-cols-2 items-center gap-y-6"
+        data-aos="fade-up-sm"
+        data-aos-delay="100"
+      >
+        <img
+          src={banner.image}
+          alt="Job Opening Hero Image"
+          width="630"
+          height="460"
+          draggable="false"
+          loading="lazy"
+          class="select-none w-full rounded-lg"
+        />
+        <div class="lg:p-10 pr-0 p-5 text-left">
+          <h3 class="mb-6" set:html={markdownify(banner.title)} />
+          <p class="font-medium mb-8" set:html={markdownify(banner.content)} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Achievement />
+
+  <section class="section">
+    <div class="container">
+      <div class="text-center mb-11">
+        <h2
+          class="mb-4"
+          data-aos="fade-up-sm"
+          data-aos-delay="50"
+          set:html={markdownify(benefits.title)}
+        />
+        <p
+          class="mb-7 text-dark/75 lg:col-8 px-10 mx-auto font-medium"
+          data-aos="fade-up-sm"
+          data-aos-delay="100"
+          set:html={markdownify(benefits.content)}
+        />
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {
+          benefits.card.map((c: { icon: string; title: string }) => (
+            <div
+              class="card bg-white colorize-hover-card p-4 lg:py-9 lg:px-5 text-center shadow flex-1"
+              data-aos="fade-in-sm"
+              data-aos-delay="50"
+            >
+              <div class="inline-block mb-6 mx-auto">
+                <DynamicIcon
+                  icon={c.icon}
+                  className={"text-6xl p-2 rounded colorize-hover-card-icon"}
+                />
+              </div>
+              <h6 class="mb-4" set:html={markdownify(c.title)} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section">
+      <div class="container">
+        <div class="text-center mb-11">
+          <span
+            class="bg-secondary/20 px-5 py-1 rounded-full text-base-sm text-dark inline-block mb-3"
+            data-aos="fade-up-sm"
+            set:html={markdownify(value!.badge!)}
+          />
+
+          <h2
+            class="mb-4"
+            data-aos="fade-up-sm"
+            data-aos-delay="50"
+            set:html={markdownify(value!.title)}
+          />
+          <pß
+            class="mb-7 text-dark/75 lg:col-8 px-10 mx-auto font-medium"
+            data-aos="fade-up-sm"
+            data-aos-delay="100"
+            set:html={markdownify(value!.description)}
+          />
+        </div>
+        <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+          {
+            value!.cards.map((card: any, i: number) => (
+              <Card card={card} i={i} />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- gallery -->
+  <section class="section">
+    <div class="container-lg bg-secondary/15 rounded-xl">
+      <div class="section-inner container">
+        <h2
+          class="mb-12 text-center"
+          data-aos="fade-up-sm"
+          data-aos-delay="50"
+          set:html={markdownify(gallery.title)}
+        />
+        <div
+          class="grid md:grid-cols-2 xl:grid-cols-3 gap-4 row-[300px] grid-flow-dense"
+          data-aos="fade-up-sm"
+          data-aos-delay="50"
+        >
+          <div class="card border-secondary/80 overflow-hidden max-h-72">
+            <img
+              src={gallery.images[0]}
+              alt="Office Photo"
+              loading="lazy"
+              draggable="false"
+              class="select-none w-full object-cover h-full contrast-75 hover:scale-110 hover:contrast-100 transition-all duration-300"
+            />
+          </div>
+          <div class="card border-secondary overflow-hidden max-h-72">
+            <img
+              src={gallery.images[1]}
+              alt="Office Photo"
+              loading="lazy"
+              draggable="false"
+              class="select-none w-full object-cover h-full contrast-75 hover:scale-110 hover:contrast-100 transition-all duration-300"
+            />
+          </div>
+          <div class="card border-secondary overflow-hidden max-h-72">
+            <img
+              src={gallery.images[2]}
+              alt="Office Photo"
+              loading="lazy"
+              draggable="false"
+              class="select-none w-full object-cover h-full contrast-75 hover:scale-110 hover:contrast-100 transition-all duration-300"
+            />
+          </div>
+          <div
+            class="card border-secondary overflow-hidden md:col-span-2 max-h-72"
+          >
+            <img
+              src={gallery.images[3]}
+              alt="Office Photo"
+              loading="lazy"
+              draggable="false"
+              class="select-none w-full object-cover h-full contrast-75 hover:scale-110 hover:contrast-100 transition-all duration-300"
+            />
+          </div>
+          <div class="card border-secondary overflow-hidden max-h-72">
+            <img
+              src={gallery.images[4]}
+              alt="Office Photo"
+              loading="lazy"
+              draggable="false"
+              class="select-none w-full object-cover h-full contrast-75 hover:scale-110 hover:contrast-100 transition-all duration-300"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--Open Positions-->
+  <section class="section -scroll-mt-28" id="job-openings">
+    <div class="container">
+      <div class="mx-auto text-center mb-9">
+        <h2 class="mb-4" data-aos="fade-up-sm">Join our fast growing team</h2>
+        <p class="text-dark" data-aos="fade-up-sm" data-aos-delay="50">
+          It is a long established fact that a reader will be distracted.
+        </p>
+      </div>
+
+      <CareerTab department={department} careers={careers} client:load />
+    </div>
+  </section>
+</Base>

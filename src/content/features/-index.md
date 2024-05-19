@@ -12,7 +12,7 @@ banner:
   image: "/images/dashboard-3.png"
 
 service:
-  title: "Our Company’s Value <br> That Matters Most"
+  title: "Powerful features to drive your <br> business forward"
   badge: "Services"
   content: "Our user-friendly interface and intuitive dashboards make it easy for you to explore and analyze your data, regardless of your technical expertise."
   services:
