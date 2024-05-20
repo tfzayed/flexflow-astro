@@ -38,6 +38,4 @@ how_it_work:
       icon: "/images/svg/icons/deploy.svg"
       image: "/images/dashboard.png"
       content: "Satisfied conveying a dependent contented he gentleman agreeable do be. Warrant private blushes removed."
-
-
 ---

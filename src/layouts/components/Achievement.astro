@@ -1,6 +1,7 @@
 ---
 import { markdownify } from "@/lib/utils/textConverter";
 import { getEntry } from "astro:content";
+import Counter from "./Counter";
 
 const { classes } = Astro.props;
 const achievement = await getEntry("sections", "achievement");
@@ -20,17 +21,20 @@ const achievement = await getEntry("sections", "achievement");
           id="observeCountUp"
         >
           {achievement.data.achievements.map(
-            (a: { title: string; content: string }) => (
+            (a: { title: number; content: string; suffix: string }) => (
               <div
                 class="flex flex-col items-center py-4 lg:py-8 card colorize-hover-card"
                 data-aos="fade-up-sm"
                 data-aos-delay="50"
               >
-                <span
-                  class="text-h1 font-bold"
-                  id="yearOfExpCount"
-                  set:html={markdownify(a.title)}
+                <Counter
+                  className="text-h1 font-bold"
+                  suffix={a.suffix}
+                  start={0}
+                  end={a.title}
+                  client:load
                 />
+
                 <span
                   class="text-dark font-medium"
                   set:html={markdownify(a.content)}

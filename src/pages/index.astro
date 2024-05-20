@@ -3,6 +3,7 @@ import Achievement from "@/components/Achievement.astro";
 import BlogCard from "@/components/BlogCard.astro";
 import Faq from "@/components/Faq.astro";
 import HowItWorksTab from "@/components/how-it-works/HowItWorksTab";
+import Insights from "@/components/Insights.astro";
 import IntegrationSection from "@/components/integration/IntegrationSection.astro";
 import PricingSection from "@/components/pricing/PricingSection.astro";
 import WhatWeDo from "@/components/WhatWeDo.astro";
@@ -122,7 +123,7 @@ const { banner, how_it_work, feature }: Homepage = homepage.data;
   <!-- /Banner -->
 
   <!--Our achievement-->
-  <Achievement classess={"bg-secondary/15 py-16"} />
+  <Achievement classes={"bg-secondary/15 py-16"} />
   <!-- achievement -->
 
   <!--How It Works-->
@@ -143,15 +144,22 @@ const { banner, how_it_work, feature }: Homepage = homepage.data;
               set:html={markdownify(how_it_work.content)}
             />
           </div>
-          <HowItWorksTab processes={how_it_work.processes} client:load />
+          <HowItWorksTab
+            processes={how_it_work.processes}
+            client:only="react"
+          />
         </div>
       </section>
     )
   }
-  <!-- how it works -->
+
   <!-- WhatWeDo -->
   <WhatWeDo />
   <!-- /WhatWeDo -->
+
+  <!-- insignts -->
+  <Insights />
+  <!-- /insignts -->
 
   <Testimonial testimonial={testimonial} />
   <IntegrationSection />
@@ -167,11 +175,11 @@ const { banner, how_it_work, feature }: Homepage = homepage.data;
         />
         <h2 class="mb-10" set:html={markdownify(postIndex.data.title!)} />
       </div>
-      <!--prettier-ignore-->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 justify-center gap-5 md:gap-8">
-       {posts.slice(0,3).map(post =>(
-        <BlogCard post={post}/>
-       ))}
+
+      <div
+        class="grid md:grid-cols-2 lg:grid-cols-3 justify-center gap-5 md:gap-8"
+      >
+        {posts.slice(0, 3).map((post) => <BlogCard post={post} />)}
       </div>
       <div class="flex justify-center w-full mt-12">
         <a href="/blog" class="btn btn-primary text-sm font-medium"

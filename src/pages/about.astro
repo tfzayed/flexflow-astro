@@ -10,9 +10,9 @@ import CallToAction from "@/partials/CallToAction.astro";
 import { getEntry } from "astro:content";
 
 const about = await getEntry("about", "-index");
-const { Content } = await about.render();
 const { title, description, meta_title, video, badge, story, value, team } =
   about.data;
+const { Content } = await about.render();
 const call_to_action = await getEntry("sections", "call-to-action");
 ---
 
@@ -105,7 +105,7 @@ const call_to_action = await getEntry("sections", "call-to-action");
       </div>
     </div>
     <!-- inspration -->
-    <VisionTab visions={value} client:load />
+    <VisionTab visions={value} client:only="react" />
   </section>
 
   <!-- team -->
@@ -157,6 +157,15 @@ const call_to_action = await getEntry("sections", "call-to-action");
     </div>
   </section>
 
-  <Faq />
+  <!-- faq -->
+  <section class="section">
+    <div class="px-4">
+      <div class="container-lg card-lg bg-secondary/15 border-secondary">
+        <div class="section-inner text-center container mx-auto">
+          <Faq />
+        </div>
+      </div>
+    </div>
+  </section>
   <CallToAction call_to_action={call_to_action} />
 </Base>

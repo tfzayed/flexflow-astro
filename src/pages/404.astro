@@ -3,20 +3,24 @@ import Base from "@/layouts/Base.astro";
 ---
 
 <Base title="Page Not Found">
-  <section class="section-sm text-center">
-    <div class="container">
-      <div class="row justify-center">
-        <div class="sm:col-10 md:col-8 lg:col-6">
-          <span class="text-[8rem] block font-bold text-dark"> 404 </span>
-          <h1 class="h2 mb-4">Page not found</h1>
-          <div class="content">
-            <p>
-              The page you are looking for might have been removed, had its name
-              changed, or is temporarily unavailable.
-            </p>
-          </div>
-          <a href="/" class="btn btn-primary mt-8">Back to home</a>
-        </div>
+  <div class="section-hero-bottom-extended"></div>
+
+  <section
+    class="section-hero-overlap-lg mx-auto max-w-[900px]"
+    data-aos="fade-up-sm"
+  >
+    <div class="bg-white shadow rounded-lg p-5 py-10 lg:px-10 lg:py-20 mx-4">
+      <h1 class="text-[18rem] text-dark glitch flex justify-center">
+        <span class="text-tertiary">4</span>
+        <span class="text-primary">0</span>
+        <span class="text-quaternary">4</span>
+      </h1>
+
+      <p class="font-semibold text-center mt-7">
+        The requested page does not exist.
+      </p>
+      <div class="flex justify-center mt-10">
+        <a href="index.html" class="btn btn-primary">Back Home</a>
       </div>
     </div>
   </section>

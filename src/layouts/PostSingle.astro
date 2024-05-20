@@ -1,27 +1,29 @@
 ---
 import { getSinglePage } from "@/lib/contentParser.astro";
+import dateFormat from "@/lib/utils/dateFormat";
 import similarItems from "@/lib/utils/similarItems";
+import { markdownify } from "@/lib/utils/textConverter";
+import BlogCard from "./components/BlogCard.astro";
 
 const BLOG_FOLDER = "blog";
 const { post } = Astro.props;
 
 const posts = await getSinglePage(BLOG_FOLDER);
 const similarPosts = similarItems(post, posts);
+
 const { Content } = await post.render();
 const { title, description, author, categories, image, date, tags } = post.data;
 ---
 
 <section class="section-hero-bottom-extended">
   <div class="container-content">
-    <h1 class="page-heading">
-      Content Writing Strategies That Will Drive Traffic to Blog
-    </h1>
-    <p class="font-medium mb-6" data-aos="fade-up-sm" data-aos-delay="50">
-      Decide on the subject or topic for your blog post. It could be a specific
-      question, a trending industry topic, a "how-to" guide, or any other
-      relevant subject that aligns with your audience's interests. Determine the
-      purpose of your writing.
-    </p>
+    <h1 class="page-heading" set:html={markdownify(title)} />
+    <p
+      class="font-medium mb-6"
+      data-aos="fade-up-sm"
+      data-aos-delay="50"
+      set:html={markdownify(description)}
+    />
 
     <div
       class="flex items-center flex-wrap gap-5 mb-4 md:mb-0"
@@ -29,18 +31,21 @@ const { title, description, author, categories, image, date, tags } = post.data;
       data-aos-delay="100"
     >
       <img
-        src="images/blog/blog-single-profile.png"
+        src="/images/blog/blog-author.png"
         alt="Profile Image"
         width="64"
         height="64"
         draggable="false"
         class="select-none mr-2"
       />
-      <span class="text-base text-dark font-bold mr-8">by andrew lee</span>
+      <span
+        class="text-base text-dark font-bold mr-8"
+        set:html={markdownify(author)}
+      />
 
       <span
         class="inline-block bg-white drop-shadow-md text-base-sm font-medium rounded-md px-2 py-2 leading-none"
-        >23 Dec 2023</span
+        >{dateFormat(date)}</span
       >
     </div>
   </div>
@@ -53,10 +58,8 @@ const { title, description, author, categories, image, date, tags } = post.data;
 >
   <div class="container-content">
     <img
-      src="images/blog-hero.png"
+      src={image}
       alt="Dashboard Image"
-      width="64"
-      height="64"
       draggable="false"
       class="select-none w-full rounded-xl"
     />
@@ -66,117 +69,7 @@ const { title, description, author, categories, image, date, tags } = post.data;
 <section class="section">
   <div class="container-content">
     <div class="content">
-      <h5>
-        Discover the game-changing content writing strategies that will takeyour
-        blog from obscurity
-      </h5>
-      <p>
-        From mastering search engine optimization (SEO) to crafting irresistible
-        headlines, we leave no stone unturned in our quest to boost your blog's
-        visibility. Learn how to conduct effective keyword research, optimize
-        your content for search engines, and climb the ranks of search engine
-        result pages (SERPs) to attract organic traffic.
-      </p>
-      <p>
-        But it doesn't end there. We go beyond SEO and explore the art of
-        creating engaging, shareable, and viral-worthy content. Discover the
-        secrets to understanding your target audience, crafting compelling
-        storytelling, and injecting your unique voice into every piece you
-        publish. Capture your readers' attention from the very first sentence
-        and keep them coming back for more.
-      </p>
-      <h5>
-        We also dive into the world of guest blogging and influencer
-        collaborations
-      </h5>
-      <p>
-        Social media is a goldmine for driving blog traffic, and we reveal how
-        to leverage platforms like Facebook, Instagram, Twitter, and LinkedIn to
-        skyrocket your blog's visibility. Uncover strategies to optimize your
-        posts for social sharing, engage with your audience, and tap into the
-        vast networks of influencers to expand your reach and attract new
-        visitors.
-      </p>
-      <p>
-        With practical tips, actionable advice, and real-world examples, this
-        guide equips you with the tools you need to transform your blog into a
-        traffic-generating powerhouse. Get ready to unleash the power of content
-        writing strategies and watch your blog thrive in the online landscape.
-        Take the first step toward blogging success and conquer the world of
-        traffic generation today!
-      </p>
-      <p>
-        Moreover, we'll explore the importance of guest blogging and building
-        relationships with influencers in your industry. Find out how to
-        identify relevant opportunities, craft compelling guest posts, and tap
-        into the existing audiences of established bloggers to drive traffic
-        back to your own blog.
-      </p>
-      <h5>
-        Content creation tools to boost your productivity and make you more
-        efficient
-      </h5>
-      <p>
-        With practical tips, real-world examples, and actionable advice, this
-        article is your roadmap to transforming your blog into a traffic magnet.
-        Buckle up and get ready to implement these content writing strategies
-        that will skyrocket your blog's visibility and attract a loyal
-        readership.
-      </p>
-      <p>
-        From mastering search engine optimization (SEO) to creating compelling
-        headlines and optimizing meta descriptions, we explore the foundational
-        elements that make your content more discoverable in search engine
-        results. Learn how to conduct keyword research, strategically
-        incorporate keywords into your content, and leverage on-page SEO tactics
-        to improve your blog's ranking.
-      </p>
-      <blockquote>
-        <p>
-          Not only did my organic search traffic improve, but I also received
-          positive feedback from my readers. The blog posts became more
-          informative, engaging, and persuasive, resulting in longer visitor
-          durations and increased social shares.
-        </p>
-      </blockquote>
-      <p>
-        With practical tips, actionable advice, and real-world examples, this
-        guide equips you with the tools you need to transform your blog into a
-        traffic-generating powerhouse. Get ready to unleash the power of content
-        writing strategies and watch your blog thrive in the online landscape.
-        Take the first step toward blogging success and conquer the world of
-        traffic generation today!
-      </p>
-      <h5>
-        has been an absolute game-changer for me. As a blogger trying to grow my
-        audience and increase traffic to my website
-      </h5>
-      <p>
-        The content writing techniques shared were clear, concise, and easy to
-        understand. The article covered everything from optimizing headlines and
-        meta descriptions to conducting keyword research and structuring content
-        effectively. Each strategy was explained in a step-by-step manner,
-        making it accessible even for beginners like me.
-      </p>
-      <ul>
-        <li>
-          I particularly appreciated the real-world examples and actionable tips
-          provided throughout the article.
-        </li>
-        <li>
-          It helped me gain a better understanding of how to implement the
-          strategies
-        </li>
-        <li>
-          I particul effectively and achieve tangible results. Since applying
-          the recommended techniques
-        </li>
-        <li>
-          I've noticed a significant increase in organic traffic to my blog.arly
-          appreciated the real-world examples and actionable tips provided
-          throughout the article.
-        </li>
-      </ul>
+      <Content />
     </div>
   </div>
 </section>
@@ -189,9 +82,13 @@ const { title, description, author, categories, image, date, tags } = post.data;
         Recent Posts
       </h2>
     </div>
-    <!--prettier-ignore-->
+
     <div class="grid md:grid-cols-2 lg:grid-cols-3 justify-center gap-8">
-     
+      {
+        similarPosts
+          .slice(0, 3)
+          .map((post, i) => <BlogCard post={post} i={i} />)
+      }
     </div>
   </div>
 </div>

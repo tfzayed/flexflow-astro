@@ -1,5 +1,5 @@
 ---
-title: "Manage All Your Social Media Profiles From One Place."
+title: "A plan for every business's needs."
 badge: "Pricing Plan"
 features:
   - "Free 15-day trial"
@@ -11,7 +11,7 @@ plans:
     packs:
       - type: "Free"
         icon: "images/svg/gift.svg"
-        price: "00"
+        price: 00
         compound: "Monthly"
         features:
           - "Customer support"
@@ -20,7 +20,7 @@ plans:
           - "Affiliate Marketplace"
       - type: "Basic Plan"
         icon: "images/svg/stash.svg"
-        price: "29"
+        price: 29
         compound: "Monthly"
         features:
           - "Customer support"
@@ -29,7 +29,7 @@ plans:
           - "Affiliate Marketplace"
       - type: "Pro Plan"
         icon: "images/svg/crown.svg"
-        price: "69"
+        price: 69
         compound: "Monthly"
         features:
           - "Customer support"
@@ -38,7 +38,7 @@ plans:
           - "Affiliate Marketplace"
       - type: "Premium Plan"
         icon: "images/svg/diamond.svg"
-        price: "100"
+        price: 100
         compound: "Monthly"
         features:
           - "Customer support"
@@ -50,7 +50,7 @@ plans:
     packs:
       - type: "Free"
         icon: "images/svg/gift.svg"
-        price: "00"
+        price: 00
         compound: "Yearly"
         features:
           - "Customer support"
@@ -59,7 +59,7 @@ plans:
           - "Affiliate Marketplace"
       - type: "Basic Plan"
         icon: "images/svg/stash.svg"
-        price: "70"
+        price: 70
         compound: "Yearly"
         features:
           - "Customer support"
@@ -68,7 +68,7 @@ plans:
           - "Affiliate Marketplace"
       - type: "Pro Plan"
         icon: "images/svg/crown.svg"
-        price: "100"
+        price: 100
         compound: "Yearly"
         features:
           - "Customer support"
@@ -77,7 +77,7 @@ plans:
           - "Affiliate Marketplace"
       - type: "Premium Plan"
         icon: "images/svg/diamond.svg"
-        price: "120"
+        price: 120
         compound: "Yearly"
         features:
           - "Customer support"

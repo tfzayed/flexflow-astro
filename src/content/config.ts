@@ -132,7 +132,7 @@ const pricingCollection = defineCollection({
           z.object({
             type: z.string(),
             icon: z.string(),
-            price: z.string(),
+            price: z.number(),
             compound: z.string(),
             features: z.array(z.string()),
           }),
@@ -171,6 +171,50 @@ const pricingCollection = defineCollection({
   }),
 });
 
+const howItWorksCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    meta_title: z.string().optional(),
+    description: z.string().optional(),
+    banner: z
+      .object({
+        title: z.string(),
+        content: z.string(),
+        button: z
+          .object({
+            enable: z.boolean(),
+            label: z.string(),
+            link: z.string(),
+          })
+          .optional(),
+        video: z
+          .object({
+            enable: z.boolean(),
+            id: z.string(),
+            thumbnail: z.string(),
+          })
+          .optional(),
+      })
+      .optional(),
+    processes: z
+      .array(
+        z.object({
+          title: z.string(),
+          content: z.string(),
+          image: z.string(),
+          button: z
+            .object({
+              enable: z.boolean(),
+              label: z.string(),
+              link: z.string(),
+            })
+            .optional(),
+        }),
+      )
+      .optional(),
+  }),
+});
+
 // Export collections
 export const collections = {
   blog: blogCollection,
@@ -178,4 +222,5 @@ export const collections = {
   pages: pagesCollection,
   about: aboutCollection,
   pricing: pricingCollection,
+  "how-it-works": howItWorksCollection,
 };

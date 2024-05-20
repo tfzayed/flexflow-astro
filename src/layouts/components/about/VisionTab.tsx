@@ -1,3 +1,5 @@
+"use client";
+
 import DynamicIcon from "@/helpers/DynamicIcon";
 import { useTabs } from "@/hooks/useTab";
 import { markdownify } from "@/lib/utils/textConverter";
@@ -7,6 +9,8 @@ import React from "react";
 type TabItem = CollectionEntry<"about">["data"]["value"];
 
 const VisionTab = ({ visions }: { visions: TabItem }) => {
+  if (!visions) return <div>Loading...</div>;
+
   const { selectedTab, onChange, selectedTabIndex, setSelectedTab } = useTabs({
     tabs: visions?.inspiration?.visions,
     initialTabId: 0,
@@ -30,6 +34,7 @@ const VisionTab = ({ visions }: { visions: TabItem }) => {
               {visions!.inspiration.visions.map(
                 (vision: any, index: number) => (
                   <button
+                    key={vision.title}
                     onClick={() => onChange(index)}
                     className="card-sm colorize-hover-card border-primary flex gap-x-3 p-3 shadow !transition-none"
                   >

@@ -1,9 +1,9 @@
 ---
 title: "How to manage your start up employees"
 meta_title: ""
-description: "this is meta description"
+description: "Decide on the subject or topic for your blog post. It could be a specific question, a trending industry topic, a how-to guide, or any other relevant subject that aligns with your audience's interests. Determine the purpose of your writing."
 date: 2023-04-04T05:00:00Z
-image: "/images/blog/blog-post-1.jpeg"
+image: "/images/blog/blog-post-2.png"
 author: "Andrew Lee"
 category: ["Integration"]
 button: "Read More"

@@ -1,0 +1,36 @@
+---
+import { markdownify } from "@/lib/utils/textConverter";
+import Card from "../Card.astro";
+
+const { service } = Astro.props;
+---
+
+<section>
+  <div class="section">
+    <div class="container">
+      <div class="text-center mb-11">
+        <span
+          class="bg-secondary/20 px-5 py-1 rounded-full text-base-sm text-dark inline-block mb-3"
+          data-aos="fade-up-sm"
+          set:html={markdownify(service.badge)}
+        />
+
+        <h2
+          class="mb-4"
+          data-aos="fade-up-sm"
+          data-aos-delay="50"
+          set:html={markdownify(service.title)}
+        />
+        <p
+          class="mb-7 text-dark/75 lg:col-8 px-10 mx-auto font-medium"
+          data-aos="fade-up-sm"
+          data-aos-delay="100"
+          set:html={markdownify(service.content)}
+        />
+      </div>
+      <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
+        {service.services.map((s: any, i: number) => <Card card={s} i={i} />)}
+      </div>
+    </div>
+  </div>
+</section>

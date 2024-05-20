@@ -3,12 +3,14 @@ import { markdownify } from "@/lib/utils/textConverter";
 import type { PricingSection } from "@/types";
 import { getEntry } from "astro:content";
 import { FaCheck } from "react-icons/fa6";
+import Counter from "../Counter";
 
 const pricing = await getEntry("pricing", "-index");
 
 const { design } = Astro.props;
 
-const { title, badge, features, plans } = pricing.data as PricingSection;
+const { title, badge, features, plans } =
+  pricing.data as unknown as PricingSection;
 ---
 
 <section class={`${design}`}>
@@ -28,7 +30,7 @@ const { title, badge, features, plans } = pricing.data as PricingSection;
           {
             features.map((f, i) => (
               <li
-                class={`font-semibold flex items-center ${(i === 1 && "text-quaternary") || (i === 2 && "text-primary") || (i === 3 && "text-tertiary")}`}
+                class={`font-semibold flex justify-center items-center ${(i === 1 && "text-quaternary") || (i === 2 && "text-primary") || (i === 3 && "text-tertiary")}`}
               >
                 <FaCheck className="mr-2" />
 
@@ -54,48 +56,54 @@ const { title, badge, features, plans } = pricing.data as PricingSection;
       <span class="text-dark">Billed Yearly</span>
     </div>
 
-    {
-      plans.map((plan) => (
-        <div
-          class="grid lg:grid-cols-2 gap-4 xl:gap-8"
-          data-aos="fade-up-sm"
-          id={plan?.id}
-        >
-          {plan.packs.map((pack) => (
-            <div class="p-5 xl:px-9 xl:py-11 shadow colorize-pricing-card">
-              <div class="grid grid-cols-10">
-                <div class="col-span-4 colorize-pricing-tag p-5 rounded-lg text-left">
-                  <div class="bg-white rounded-md mb-10 inline-block p-4">
-                    <img src={pack.icon} alt="Logo" width="42" height="42" />
+    <div data-aos="fade-up-sm">
+      {
+        plans.map((plan) => (
+          <div class="grid lg:grid-cols-2 gap-4 xl:gap-8" id={plan?.id}>
+            {plan.packs.map((pack) => (
+              <div class="p-5 xl:px-9 xl:py-11 shadow colorize-pricing-card">
+                <div class="grid grid-cols-10">
+                  <div class="col-span-4 colorize-pricing-tag p-5 rounded-lg text-left">
+                    <div class="bg-white rounded-md mb-10 inline-block p-4">
+                      <img src={pack.icon} alt="Logo" width="42" height="42" />
+                    </div>
+                    <h6 class="font-semibold">{pack.type}</h6>
+                    <div class="flex flex-col  sm:flex-row items-baseline">
+                      <Counter
+                        className="text-h3 text-dark font-bold"
+                        prefix="$"
+                        start={0}
+                        end={pack.price}
+                        client:load
+                      />
+                      <span class="text-sm text-dark">/{pack.compound}</span>
+                    </div>
                   </div>
-                  <h6 class="font-semibold">{pack.type}</h6>
-                  <span class="text-h3 text-dark font-bold">{pack.price}</span>
-                  <span class="text-sm text-dark">/{pack.compound}</span>
-                </div>
-                <div class="col-span-6 ml-4 xl:ml-6 flex flex-col justify-between">
-                  <ul class="space-y-4">
-                    {pack.features.map((feature) => (
-                      <li class="flex items-start gap-x-2">
-                        <span class="colorize-pricing-check rounded-sm w-5 h-5 grid place-items-center">
-                          <FaCheck className="text-white text-base leading-none" />
-                        </span>
-                        <span class="text-sm font-medium text-dark">
-                          {feature}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div class="col-span-6 ml-4 xl:ml-6 flex flex-col justify-between">
+                    <ul class="space-y-4">
+                      {pack.features.map((feature) => (
+                        <li class="flex items-start gap-x-2">
+                          <span class="colorize-pricing-check rounded-sm w-5 h-5 grid place-items-center">
+                            <FaCheck className="text-white text-base leading-none" />
+                          </span>
+                          <span class="text-sm font-medium text-dark">
+                            {feature}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
 
-                  <a href="#" class="colorize-pricing-btn text-center">
-                    Start Free Trial
-                  </a>
+                    <a href="#" class="colorize-pricing-btn text-center">
+                      Start Free Trial
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      ))
-    }
+            ))}
+          </div>
+        ))
+      }
+    </div>
 
     <!--Pricing Cards-->
   </div>

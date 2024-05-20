@@ -1,5 +1,6 @@
 ---
-import Card from "@/components/Card.astro";
+import Services from "@/components/feature/Services.astro";
+import Insights from "@/components/Insights.astro";
 import IntegrationSection from "@/components/integration/IntegrationSection.astro";
 import WhatWeDo from "@/components/WhatWeDo.astro";
 import Base from "@/layouts/Base.astro";
@@ -12,7 +13,7 @@ const { title, badge, description, banner, service } = pageIndex.data;
 const testimonial = await getEntry("sections", "testimonial");
 ---
 
-<Base>
+<Base title={badge}>
   <section class="section-hero mb-24 xl:mb-28">
     <div
       class="flex flex-col lg:flex-row gap-x-4 gap-y-14 items-center container mx-auto w-full"
@@ -91,37 +92,13 @@ const testimonial = await getEntry("sections", "testimonial");
     </div>
   </section>
 
-  <section>
-    <div class="section">
-      <div class="container">
-        <div class="text-center mb-11">
-          <span
-            class="bg-secondary/20 px-5 py-1 rounded-full text-base-sm text-dark inline-block mb-3"
-            data-aos="fade-up-sm"
-            set:html={markdownify(service.badge)}
-          />
-
-          <h2
-            class="mb-4"
-            data-aos="fade-up-sm"
-            data-aos-delay="50"
-            set:html={markdownify(service.title)}
-          />
-          <p
-            class="mb-7 text-dark/75 lg:col-8 px-10 mx-auto font-medium"
-            data-aos="fade-up-sm"
-            data-aos-delay="100"
-            set:html={markdownify(service.content)}
-          />
-        </div>
-        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
-          {service.services.map((s: any, i: number) => <Card card={s} i={i} />)}
-        </div>
-      </div>
-    </div>
-  </section>
+  <Services service={service} />
 
   <WhatWeDo />
+
+  <!-- insignts -->
+  <Insights />
+  <!-- /insignts -->
 
   <Testimonial testimonial={testimonial} />
   <IntegrationSection />

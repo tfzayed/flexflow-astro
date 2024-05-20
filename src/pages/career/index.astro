@@ -17,7 +17,7 @@ const department = await getTaxonomy("career", "department");
 const call_to_action = await getEntry("sections", "call-to-action");
 ---
 
-<Base>
+<Base title={title}>
   <section class="section-hero mb-24 xl:mb-28">
     <div class="text-center">
       <h2 class="mb-10 page-heading" set:html={markdownify(title)} />

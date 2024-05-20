@@ -44,7 +44,7 @@
   "login_button": {
     "enable": true,
     "label": "Login",
-    "link": "/login"
+    "link": "/signin"
   },
 
   "disqus": {

@@ -11,8 +11,8 @@ const { title, badge, features, plans, pricing_table_data } = priceIndex.data;
 const testimonial = await getEntry("sections", "testimonial");
 ---
 
-<Base>
-  <PricingSection design={"section-hero mb-24 xl:mb-28"} />
+<Base title={badge}>
+  <PricingSection design={"section-hero mb-24 xl:mb-28"} title={title} />
 
   <!--Pricing Table-->
   <section class="section">
@@ -139,5 +139,14 @@ const testimonial = await getEntry("sections", "testimonial");
   </section>
 
   <Testimonial testimonial={testimonial} />
-  <Faq />
+  <!-- faq -->
+  <section class="section">
+    <div class="px-4">
+      <div class="container-lg card-lg bg-secondary/15 border-secondary">
+        <div class="section-inner text-center container mx-auto">
+          <Faq />
+        </div>
+      </div>
+    </div>
+  </section>
 </Base>

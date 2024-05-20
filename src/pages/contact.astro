@@ -11,6 +11,7 @@ const { contact_form_action }: { contact_form_action: string } = config.params;
 const { title, description, meta_title, badge, image } = contact.data;
 const call_to_action = await getEntry("sections", "call-to-action");
 ---
+
 <Base
   title={title}
   meta_title={meta_title}
