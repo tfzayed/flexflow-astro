@@ -8,11 +8,6 @@ const similarItems = (currentItem: any, allItems: any[]) => {
     categories = currentItem.data.categories;
   }
 
-  // set tags
-  if (currentItem.data.tags.length > 0) {
-    tags = currentItem.data.tags;
-  }
-
   // filter by categories
   const filterByCategories = allItems.filter((item: any) =>
     categories.find((category) => item.data.categories.includes(category)),

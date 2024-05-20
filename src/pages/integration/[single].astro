@@ -1,5 +1,74 @@
 ---
+import MoreIntegration from "@/components/integration/MoreIntegration.astro";
+import VideoPlayer from "@/components/integration/VideoPlayer.astro";
+import Base from "@/layouts/Base.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import { markdownify } from "@/lib/utils/textConverter";
+import CallToAction from "@/partials/CallToAction.astro";
+import { getEntry } from "astro:content";
 
+export async function getStaticPaths() {
+  const integrations = await getSinglePage("integration");
+
+  const paths = integrations.map((integration) => ({
+    params: {
+      single: integration.slug,
+    },
+    props: { integration },
+  }));
+  return paths;
+}
+
+const { integration } = Astro.props;
+const { title, meta_title, description, logo, type, video } = integration?.data;
+
+const { Content } = await integration.render();
+
+const call_to_action = await getEntry("sections", "call-to-action");
 ---
 
-<h1>integration single</h1>
+<Base {...integration.data}>
+  <div class="section-hero-bottom-extended"></div>
+
+  <section class="section-hero-overlap-lg container" data-aos="fade-up-sm">
+    <div
+      class="bg-white shadow rounded-lg p-5 py-10 lg:p-10 xl:p-28 flex md:flex-row flex-col-reverse gap-y-8 gap-x-10"
+    >
+      <div class="flex-1">
+        <div class="flex items-center gap-x-4 mb-6">
+          <img
+            src={logo}
+            alt="App Logo"
+            width="80"
+            height="80"
+            draggable="false"
+            class="select-none"
+          />
+          <div>
+            <h5 set:html={markdownify(title)} />
+            <span class="text-sm font-medium" set:html={markdownify(type)} />
+          </div>
+        </div>
+        <p class="mb-7" set:html={markdownify(description)} />
+        <a href="pricing.html" class="btn btn-primary inline-block"
+          >Get Started</a
+        >
+      </div>
+
+      <!-- video player -->
+      <VideoPlayer video={video} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="lg:col-7 mx-auto space-y-10 -mt-10">
+      <div class="content px-4">
+        <Content />
+      </div>
+    </div>
+  </section>
+
+  <MoreIntegration integration={integration} />
+
+  <CallToAction call_to_action={call_to_action} />
+</Base>

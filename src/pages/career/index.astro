@@ -7,12 +7,14 @@ import Base from "@/layouts/Base.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import { getTaxonomy } from "@/lib/taxonomyParser.astro";
 import { markdownify } from "@/lib/utils/textConverter";
+import CallToAction from "@/partials/CallToAction.astro";
 import { getEntry } from "astro:content";
 
 const careerIndex = await getEntry("career", "-index");
 const { title, button, banner, benefits, value, gallery } = careerIndex.data;
 const careers = await getSinglePage("career");
 const department = await getTaxonomy("career", "department");
+const call_to_action = await getEntry("sections", "call-to-action");
 ---
 
 <Base>
@@ -202,4 +204,5 @@ const department = await getTaxonomy("career", "department");
       <CareerTab department={department} careers={careers} client:load />
     </div>
   </section>
+  <CallToAction call_to_action={call_to_action} />
 </Base>

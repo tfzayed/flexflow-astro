@@ -29,15 +29,13 @@ const { Content } = await page.render();
   description={description}
   image={image}
 >
-  <PageHeader title={title} />
-  <section class="section-sm">
-    <div class="container">
-      <div class="row justify-center">
-        <div class="lg:col-10">
-          <div class="content">
-            <Content />
-          </div>
-        </div>
+  <PageHeader title={title} description={description} />
+  <section class="section px-4">
+    <div
+      class="container-content bg-white rounded-xl shadow p-6 lg:px-14 lg:py-16 mt-10 lg:mt-20"
+    >
+      <div class="content">
+        <Content />
       </div>
     </div>
   </section>

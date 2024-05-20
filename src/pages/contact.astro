@@ -1,65 +1,165 @@
 ---
+import Faq from "@/components/Faq.astro";
 import config from "@/config/config.json";
 import Base from "@/layouts/Base.astro";
-import PageHeader from "@/partials/PageHeader.astro";
+import { markdownify } from "@/lib/utils/textConverter";
+import CallToAction from "@/partials/CallToAction.astro";
 import { getEntry } from "astro:content";
 
 const contact = await getEntry("contact", "-index");
 const { contact_form_action }: { contact_form_action: string } = config.params;
-const { title, description, meta_title, image } = contact.data;
+const { title, description, meta_title, badge, image } = contact.data;
+const call_to_action = await getEntry("sections", "call-to-action");
 ---
-
 <Base
   title={title}
   meta_title={meta_title}
   description={description}
   image={image}
 >
-  <PageHeader title={title} />
-  <section class="section-sm">
-    <div class="container">
-      <div class="row">
-        <div class="mx-auto md:col-10 lg:col-6">
-          <form action={contact_form_action} method="POST">
-            <div class="mb-6">
-              <label for="name" class="form-label">
-                Full Name <span class="text-red-500">*</span>
-              </label>
+  <section class="section-hero-bottom-extended">
+    <div class="text-center">
+      <span
+        class="bg-white/40 px-5 py-1 rounded-full text-base-sm text-dark inline-block mb-3"
+        data-aos=""
+        set:html={markdownify(badge)}
+      />
+
+      <h1
+        class="page-heading"
+        data-aos="fade-up-sm"
+        data-aos-delay="50"
+        set:html={markdownify(title)}
+      />
+      <p
+        class="mb-7 text-dark/75 xl:col-6 text-balance px-10 mx-auto font-medium"
+        data-aos="fade-up-sm"
+        data-aos-delay="100"
+        set:html={markdownify(description)}
+      />
+    </div>
+  </section>
+
+  <section
+    class="section-hero-overlap p-10 xl:p-20 shadow rounded-lg bg-white"
+    data-aos="fade-up-sm"
+  >
+    <div class="flex gap-5 flex-col lg:flex-row">
+      <div class="flex-1 flex flex-col gap-y-10">
+        <div>
+          <h3 class="mb-4">Let’s Talk</h3>
+          <p class="font-medium">
+            Have some big idea or brand to develop and need help? Then reach out
+            we'd love to hear about your project and provide help
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-4">
+          <div>
+            <h6 class="text-dark/90 mb-4">Location</h6>
+            <p class="text-sm font-medium mb-2">
+              1901 Thornridge Cir. <br /> Shiloh, Hawaii 81063
+            </p>
+            <p class="text-sm font-medium">
+              1901 Thornridge Cir. <br /> Shiloh, Hawaii 81063
+            </p>
+          </div>
+          <div>
+            <h6 class="text-dark/90">Email</h6>
+            <p class="py-4 text-sm font-medium">beebs@gmail.com</p>
+          </div>
+          <div>
+            <h6 class="text-dark/90">Phone</h6>
+            <p class="py-4 text-sm font-medium">(702) 555-0122</p>
+          </div>
+        </div>
+        <div>
+          <h6 class="text-dark/90 mb-4">Socials</h6>
+          <ul class="space-y-2 text-sm font-medium text-dark">
+            <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
+            <li>
+              <a href="https://instagram.com" target="_blank">Instagram</a>
+            </li>
+            <li><a href="https://x.com" target="_blank">Twitter</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="flex-1">
+        <form>
+          <div class="space-y-6">
+            <div class="form-">
+              <label class="form-label" for="name"
+                >Name <span class="text-red-500">*</span></label
+              >
               <input
+                type="text"
                 id="name"
                 name="name"
                 class="form-input"
-                placeholder="John Doe"
-                type="text"
+                required
               />
             </div>
-            <div class="mb-6">
-              <label for="email" class="form-label">
-                Working Mail <span class="text-red-500">*</span>
-              </label>
+
+            <div class="form-">
+              <label class="form-label" for="email"
+                >Email <span class="text-red-500">*</span></label
+              >
               <input
+                class="form-input"
+                type="text"
                 id="email"
                 name="email"
-                class="form-input"
-                placeholder="john.doe@email.com"
-                type="email"
+                required
               />
             </div>
-            <div class="mb-6">
-              <label for="message" class="form-label">
-                Anything else? <span class="text-red-500">*</span>
-              </label>
+
+            <div class="form-">
+              <label class="form-label" for="subject"
+                >Subject <span class="text-red-500">*</span></label
+              >
+              <select class="form-input" id="subject" name="subject" required>
+                <option value="brand to develop and need">
+                  brand to develop and need
+                </option>
+                <option value="brand to develop and need">
+                  brand to develop and need 1
+                </option>
+                <option value="brand to develop and need">
+                  brand to develop and need 2
+                </option>
+              </select>
+            </div>
+
+            <div>
+              <label class="form-label" for="message"
+                >Message <span class="text-red-500">*</span></label
+              >
               <textarea
+                class="form-input"
                 id="message"
                 name="message"
-                class="form-input"
-                placeholder="Message goes here..."
-                rows="8"></textarea>
+                rows="4"
+                placeholder="Your Message"
+                required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+          </div>
+          <button type="submit" class="btn btn-primary w-full mt-8">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- faq -->
+  <section class="section">
+    <div class="px-4">
+      <div class="container-lg card-lg bg-secondary/15 border-secondary">
+        <div class="section-inner text-center container mx-auto">
+          <Faq />
         </div>
       </div>
     </div>
   </section>
+
+  <CallToAction call_to_action={call_to_action} />
 </Base>

@@ -42,11 +42,13 @@ export type Testimonial = {
 };
 
 export type IntegrationCard = {
-  title: string;
-  badge: string;
-  content: string;
-  button: Button;
-  apps: string[];
+  homepage_section: {
+    title: string;
+    badge: string;
+    content: string;
+    button: Button;
+    apps: string[];
+  };
 };
 
 export type PricingSection = {

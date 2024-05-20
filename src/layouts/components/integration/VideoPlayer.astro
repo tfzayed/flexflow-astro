@@ -1,0 +1,100 @@
+---
+import { FaXmark } from "react-icons/fa6";
+
+const { video } = Astro.props;
+---
+
+<div class="flex justify-center relative w-full flex-1">
+  <div class="yt-container overflow-hidden rounded-lg">
+    <img
+      id="yt-custom-thumb"
+      src={video.thumbnail}
+      class="brightness-50 object-cover h-full"
+      alt="Integration"
+    />
+  </div>
+
+  <div
+    class="absolute inset-0 grid place-items-center cursor-pointer"
+    id="yt-custom-thumb-btn"
+    data-modal-open
+  >
+    <button>
+      <div class="wave-btn is-play">
+        <div class="wave-btn-outer-circle has-scale-animation"></div>
+        <div class="wave-btn-outer-circle has-scale-animation has-delay-short">
+        </div>
+        <div class="wave-btn-icon is-play">
+          <svg height="100%" width="100%" class="fill-[#061237]">
+            <polygon
+              class="wave-btn-triangle"
+              points="5,0 30,15 5,30"
+              viewBox="0 0 30 15"></polygon>
+            <path
+              class="path stroke-[#061237]"
+              d="M5,0 L30,15 L5,30z"
+              fill="none"
+              stroke-width="1"></path>
+          </svg>
+        </div>
+      </div></button
+    >
+  </div>
+  <div class="modal" data-modal>
+    <div class="modal-overlay" data-modal-close data-modal-overlay></div>
+    <div class="modal-content w-[950px]">
+      <button class="modal-close grid place-items-center z-50" data-modal-close>
+        <FaXmark />
+      </button>
+      <div class="video-container">
+        <iframe
+          id="youtube-iframe"
+          src={`https://www.youtube.com/embed/${video.id}`}
+          frameborder="0"
+          loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ############# Video ################
+  // astro:page-load event is fired when the page is loaded
+  document.addEventListener("astro:page-load", () => {
+    // ########################## Modal ##############################
+    const openModalButtons = document.querySelectorAll("[data-modal-open]");
+    const closeModalButtons = document.querySelectorAll("[data-modal-close]");
+
+    function openModal(modal: any) {
+      if (modal === null) {
+        return null;
+      }
+      const overlay = modal.querySelector("[data-modal-overlay]");
+      modal.style.display = "block";
+      overlay.style.display = "block";
+    }
+
+    function closeModal(modal: any) {
+      if (modal === null) {
+        return null;
+      }
+      const overlay = modal.querySelector("[data-modal-overlay]");
+      modal.style.display = "none";
+      overlay.style.display = "none";
+    }
+
+    openModalButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const modal = button.nextElementSibling;
+        openModal(modal);
+      });
+    });
+
+    closeModalButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const modal = button.closest("[data-modal]");
+        closeModal(modal);
+      });
+    });
+  });
+</script>

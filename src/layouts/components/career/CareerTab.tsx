@@ -20,7 +20,6 @@ const CareerTab = ({
 
   const [activeTab, setActiveTab] = useState("all");
   const filterByCategories = taxonomyFilter(careers, "department", activeTab);
-  console.log("-------", department);
 
   const career_list = activeTab === "all" ? careers : filterByCategories;
 

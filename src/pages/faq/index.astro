@@ -1,5 +1,19 @@
 ---
 import Faq from "@/components/Faq.astro";
+import Base from "@/layouts/Base.astro";
+import CallToAction from "@/partials/CallToAction.astro";
+import { getEntry } from "astro:content";
+
+const call_to_action = await getEntry("sections", "call-to-action");
 ---
 
-<Faq />
+<Base>
+  <div class="section-hero-bottom-extended"></div>
+  <section class="section-hero-overlap-lg !container-lg" data-aos="fade-up-sm">
+    <div class="bg-white shadow rounded-lg p-5 lg:px-10 lg:py-12 mx-4">
+      <div class="2xl:px-5 2xl:py-10"><Faq /></div>
+    </div>
+  </section>
+
+  <CallToAction call_to_action={call_to_action} />
+</Base>
