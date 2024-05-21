@@ -5,7 +5,7 @@ description: "Decide on the subject or topic for your blog post. It could be a s
 date: 2023-04-04T05:00:00Z
 image: "/images/blog/blog-post-3.png"
 author: "Andrew Lee"
-category: ["Integration"]
+categories: ["Integration"]
 button: "Read More"
 draft: false
 ---

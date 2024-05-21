@@ -1,5 +1,40 @@
 import { defineCollection, z } from "astro:content";
 
+// homepage
+const homepageCollection = defineCollection({
+  schema: z.object({
+    banner: z.object({
+      title: z.string(),
+      content: z.string(),
+      image: z.string(),
+      buttons: z.array(
+        z.object({
+          enable: z.boolean(),
+          label: z.string(),
+          link: z.string(),
+        }),
+      ),
+      brand: z.object({
+        title: z.string(),
+        logos: z.array(z.string()),
+      }),
+    }),
+    how_it_work: z.object({
+      enable: z.boolean(),
+      title: z.string(),
+      content: z.string(),
+      processes: z.array(
+        z.object({
+          title: z.string(),
+          icon: z.string(),
+          image: z.string(),
+          content: z.string(),
+        }),
+      ),
+    }),
+  }),
+});
+
 // Post collection schema
 const blogCollection = defineCollection({
   schema: z.object({
@@ -49,6 +84,36 @@ const pagesCollection = defineCollection({
     image: z.string().optional(),
     badge: z.string().optional(),
     draft: z.boolean().optional(),
+  }),
+});
+
+const featureCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    badge: z.string(),
+    description: z.string(),
+    banner: z.object({
+      title: z.string(),
+      content: z.string(),
+      button: z.object({
+        enable: z.boolean(),
+        label: z.string(),
+        link: z.string(),
+      }),
+      image: z.string(),
+    }),
+    service: z.object({
+      title: z.string(),
+      badge: z.string(),
+      content: z.string(),
+      services: z.array(
+        z.object({
+          title: z.string(),
+          icon: z.string(),
+          content: z.string(),
+        }),
+      ),
+    }),
   }),
 });
 
@@ -215,12 +280,115 @@ const howItWorksCollection = defineCollection({
   }),
 });
 
+// integration
+const integrationSingleCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    meta_title: z.string().optional(),
+    description: z.string().optional(),
+    logo: z.string().optional(),
+    homepage_section: z
+      .object({
+        title: z.string(),
+        badge: z.string(),
+        content: z.string(),
+        button: z.object({
+          enable: z.boolean(),
+          label: z.string(),
+          link: z.string(),
+        }),
+        apps: z.array(z.string()),
+      })
+      .optional(),
+    video: z
+      .object({
+        id: z.string(),
+        thumbnail: z.string(),
+      })
+      .optional(),
+    categories: z.array(z.string()).optional(),
+    type: z.string().optional(),
+    content: z.string().optional(),
+  }),
+});
+
+// career
+const careerCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    meta_title: z.string().optional(),
+    description: z.string().optional(),
+    button: z
+      .object({
+        enable: z.boolean(),
+        label: z.string(),
+        link: z.string(),
+      })
+      .optional(),
+    banner: z
+      .object({
+        title: z.string(),
+        content: z.string(),
+        image: z.string(),
+      })
+      .optional(),
+    benefits: z
+      .object({
+        title: z.string(),
+        content: z.string(),
+        card: z.array(
+          z.object({
+            title: z.string(),
+            icon: z.string(),
+          }),
+        ),
+      })
+      .optional(),
+    value: z
+      .object({
+        badge: z.string(),
+        title: z.string(),
+        description: z.string(),
+        cards: z.array(
+          z.object({
+            icon: z.string(),
+            title: z.string(),
+            content: z.string(),
+          }),
+        ),
+      })
+      .optional(),
+    gallery: z
+      .object({
+        title: z.string(),
+        images: z.array(z.string()),
+      })
+      .optional(),
+    department: z.array(z.string()).optional(),
+    details: z.string().optional(),
+    summery: z.string().optional(),
+    location: z.string().optional(),
+    city: z.string().optional(),
+    duration: z.string().optional(),
+    salary: z.string().optional(),
+    image: z.string().optional(),
+    qualification: z.array(z.string()).optional(),
+    jobDescription: z.string().optional(),
+    jobResponsibilities: z.string().optional(),
+    otherBenefits: z.string().optional(),
+  }),
+});
+
 // Export collections
 export const collections = {
+  homepage: homepageCollection,
   blog: blogCollection,
   authors: authorsCollection,
+  integration: integrationSingleCollection,
   pages: pagesCollection,
+  features: featureCollection,
   about: aboutCollection,
+  career: careerCollection,
   pricing: pricingCollection,
   "how-it-works": howItWorksCollection,
 };

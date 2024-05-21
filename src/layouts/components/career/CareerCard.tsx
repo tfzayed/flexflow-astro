@@ -1,9 +1,12 @@
 import { markdownify, slugify } from "@/lib/utils/textConverter";
+import type { CollectionEntry } from "astro:content";
 import React from "react";
 import { BiTimeFive } from "react-icons/bi";
 import { RxDividerVertical } from "react-icons/rx";
 
-const CareerCard = ({ career }: { career: any }) => {
+type CareerData = CollectionEntry<"career">;
+
+const CareerCard = ({ career }: { career: CareerData }) => {
   return (
     <div className="lg:col-6 colorize-hover-position-card">
       <div className="card border-t border-l p-7 lg:px-7 lg:py-9">
@@ -41,7 +44,7 @@ const CareerCard = ({ career }: { career: any }) => {
         <hr className="mt-6 mb-5" />
 
         <p className="font-medium mb-4 text-dark">Minimum qualifications</p>
-        {career.data?.qualification?.map((q: any, index: number) => (
+        {career.data?.qualification?.map((q, index: number) => (
           <ul
             key={index}
             className="text-base-sm font-medium space-y-2 text-dark"

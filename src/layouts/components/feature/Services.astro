@@ -1,8 +1,11 @@
 ---
 import { markdownify } from "@/lib/utils/textConverter";
+import type { CollectionEntry } from "astro:content";
 import Card from "../Card.astro";
 
-const { service } = Astro.props;
+type ServiceType = CollectionEntry<"features">["data"];
+
+const { service } = Astro.props as ServiceType;
 ---
 
 <section>
@@ -29,7 +32,7 @@ const { service } = Astro.props;
         />
       </div>
       <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
-        {service.services.map((s: any, i: number) => <Card card={s} i={i} />)}
+        {service.services.map((s, i: number) => <Card card={s} i={i} />)}
       </div>
     </div>
   </div>

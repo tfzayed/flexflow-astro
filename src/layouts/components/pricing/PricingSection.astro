@@ -1,6 +1,5 @@
 ---
 import { markdownify } from "@/lib/utils/textConverter";
-import type { PricingSection } from "@/types";
 import { getEntry } from "astro:content";
 import { FaCheck } from "react-icons/fa6";
 import Counter from "../Counter";
@@ -9,8 +8,7 @@ const pricing = await getEntry("pricing", "-index");
 
 const { design } = Astro.props;
 
-const { title, badge, features, plans } =
-  pricing.data as unknown as PricingSection;
+const { title, badge, features, plans } = pricing.data;
 ---
 
 <section class={`${design}`}>
@@ -19,7 +17,7 @@ const { title, badge, features, plans } =
       <span
         class="bg-secondary/15 px-5 py-1 rounded-full text-dark text-base-sm inline-block mb-3"
         data-aos="fade-up-sm"
-        set:html={markdownify(badge)}
+        set:html={markdownify(badge!)}
       />
       <h2 class="mb-10" data-aos="fade-up-sm" set:html={markdownify(title)} />
       <div
@@ -28,7 +26,7 @@ const { title, badge, features, plans } =
       >
         <ul class="flex justify-between flex-col md:flex-row">
           {
-            features.map((f, i) => (
+            features?.map((f, i) => (
               <li
                 class={`font-semibold flex justify-center items-center ${(i === 1 && "text-quaternary") || (i === 2 && "text-primary") || (i === 3 && "text-tertiary")}`}
               >

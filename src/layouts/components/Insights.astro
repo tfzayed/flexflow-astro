@@ -1,15 +1,16 @@
 ---
 import DynamicIcon from "@/helpers/DynamicIcon";
 import { markdownify } from "@/lib/utils/textConverter";
+import type { Insight } from "@/types";
 import { getEntry } from "astro:content";
 
 const sectionIndex = await getEntry("sections", "insights");
-const { insight } = sectionIndex?.data;
+const { insight } = sectionIndex?.data as Insight;
 ---
 
 <section>
   {
-    insight.map((i: any, index: number) => (
+    insight.map((i, index: number) => (
       <div class="section">
         <div class="container">
           <div class="row items-center justify-between gap-y-10">
@@ -23,7 +24,7 @@ const { insight } = sectionIndex?.data;
               <div
                 class={`grid gap-5 justify-center lg:justify-start ${index % 2 ? "grid-cols" : "sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2"}`}
               >
-                {i.insights.map((i: any) => (
+                {i.insights.map((i) => (
                   <div class="flex items-center gap-x-3 rounded-md p-3 w-full colorize-list-card">
                     <span>
                       <i class="fa-solid @@fa-icon colorize-icon text-xl" />

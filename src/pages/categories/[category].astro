@@ -1,5 +1,7 @@
 ---
 import BlogCard from "@/components/BlogCard.astro";
+import Pagination from "@/components/Pagination.astro";
+import config from "@/config/config.json";
 import Base from "@/layouts/Base.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import { getTaxonomy } from "@/lib/taxonomyParser.astro";
@@ -26,21 +28,28 @@ const BLOG_FOLDER = "blog";
 const posts = await getSinglePage(BLOG_FOLDER);
 const filterByCategories = taxonomyFilter(posts, "categories", category!);
 const sortedPosts = sortByDate(filterByCategories);
+const currentPosts = sortedPosts.slice(0, config.settings.pagination);
+
+const totalPages: number = Math.ceil(
+  sortedPosts.length / config.settings.pagination,
+);
 ---
 
 <Base title={category}>
   <PageHeader title={category} />
-  <div class="section-sm pb-0">
+  <div class="section pt-24 xl:pt-28">
     <div class="container">
-      <div class="row">
-        {
-          sortedPosts.map((post) => (
-            <div class="mb-14 md:col-6 lg:col-4">
-              <BlogCard data={post} />
-            </div>
-          ))
-        }
+      <div
+        class="grid md:grid-cols-2 lg:grid-cols-3 justify-center gap-5 md:gap-8"
+      >
+        {currentPosts.map((post, i) => <BlogCard post={post} i={i} />)}
       </div>
+
+      <Pagination
+        section={BLOG_FOLDER}
+        currentPage={1}
+        totalPages={totalPages}
+      />
     </div>
   </div>
 </Base>

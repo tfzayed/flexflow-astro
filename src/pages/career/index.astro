@@ -114,11 +114,7 @@ const call_to_action = await getEntry("sections", "call-to-action");
           />
         </div>
         <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
-          {
-            value!.cards.map((card: any, i: number) => (
-              <Card card={card} i={i} />
-            ))
-          }
+          {value!.cards.map((card, i: number) => <Card card={card} i={i} />)}
         </div>
       </div>
     </div>

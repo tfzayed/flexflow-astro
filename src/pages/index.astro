@@ -12,46 +12,18 @@ import { getSinglePage } from "@/lib/contentParser.astro";
 import { markdownify } from "@/lib/utils/textConverter";
 import CallToAction from "@/partials/CallToAction.astro";
 import Testimonial from "@/partials/Testimonial.astro";
-import type { Button, Feature } from "@/types";
 import { getEntry } from "astro:content";
 
-interface Homepage {
-  banner: {
-    title: string;
-    content: string;
-    image: string;
-    buttons: Button[];
-  };
-  achievement: {
-    enable: boolean;
-    title: string;
-    achievements: {
-      title: string;
-      content: string;
-    }[];
-  };
-  how_it_work: {
-    enable: boolean;
-    title: string;
-    content: string;
-    processes: {
-      title: string;
-      icon: string;
-      image: string;
-      content: string;
-    }[];
-  };
-  feature: Feature;
-}
 const BLOG_FOLDER = "blog";
 
 const homepage = await getEntry("homepage", "-index");
-const testimonial = await getEntry("sections", "testimonial");
+const { banner, how_it_work } = homepage.data;
+
 const postIndex = await getEntry(BLOG_FOLDER, "-index");
 const posts = await getSinglePage(BLOG_FOLDER);
 
+const testimonial = await getEntry("sections", "testimonial");
 const call_to_action = await getEntry("sections", "call-to-action");
-const { banner, how_it_work, feature }: Homepage = homepage.data;
 ---
 
 <Base>
@@ -71,17 +43,7 @@ const { banner, how_it_work, feature }: Homepage = homepage.data;
         >
           {banner.content}
         </p>
-        <div data-aos="fade-left-sm" data-aos-delay="100">
-          {
-            banner.buttons.map((btn) => {
-              btn.enable && (
-                <a href={btn.link} class="btn btn-primary mr-3 mb-3">
-                  {btn.label}
-                </a>
-              );
-            })
-          }
-        </div>
+        <div data-aos="fade-left-sm" data-aos-delay="100"></div>
       </div>
       <div class="flex-1">
         <div
@@ -124,10 +86,8 @@ const { banner, how_it_work, feature }: Homepage = homepage.data;
 
   <!--Our achievement-->
   <Achievement classes={"bg-secondary/15 py-16"} />
-  <!-- achievement -->
 
   <!--How It Works-->
-
   {
     how_it_work.enable && (
       <section class="section">
@@ -155,11 +115,9 @@ const { banner, how_it_work, feature }: Homepage = homepage.data;
 
   <!-- WhatWeDo -->
   <WhatWeDo />
-  <!-- /WhatWeDo -->
 
   <!-- insignts -->
   <Insights />
-  <!-- /insignts -->
 
   <Testimonial testimonial={testimonial} />
   <IntegrationSection />

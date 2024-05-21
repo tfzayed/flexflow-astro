@@ -4,7 +4,7 @@ badge: "Feature"
 description: "Financial situations change over time, so it's important to regularly review and update your analyses. This ensures that your financial strategies remain aligned with your goals."
 banner:
   title: "Accumulating significant feedback from numerous source"
-  content: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure ther"
+  content: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there"
   button:
     enable: true
     label: "Start Free Trial"

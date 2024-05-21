@@ -31,25 +31,23 @@ const VisionTab = ({ visions }: { visions: TabItem }) => {
               }}
             />
             <div className="flex gap-5 mb-9 justify-center lg:justify-start">
-              {visions!.inspiration.visions.map(
-                (vision: any, index: number) => (
-                  <button
-                    key={vision.title}
-                    onClick={() => onChange(index)}
-                    className="card-sm colorize-hover-card border-primary flex gap-x-3 p-3 shadow !transition-none"
-                  >
-                    <span>
-                      <DynamicIcon
-                        icon={vision.icon}
-                        className="colorize-hover-card-fa-icon text-xl"
-                      />
-                    </span>
-                    <span className="text-lg font-bold text-dark capitalize">
-                      {vision.title}
-                    </span>
-                  </button>
-                ),
-              )}
+              {visions!.inspiration.visions.map((vision, index: number) => (
+                <button
+                  key={vision.title}
+                  onClick={() => onChange(index)}
+                  className="card-sm colorize-hover-card border-primary flex gap-x-3 p-3 shadow !transition-none"
+                >
+                  <span>
+                    <DynamicIcon
+                      icon={vision.icon}
+                      className="colorize-hover-card-fa-icon text-xl"
+                    />
+                  </span>
+                  <span className="text-lg font-bold text-dark capitalize">
+                    {vision.title}
+                  </span>
+                </button>
+              ))}
             </div>
             <p
               dangerouslySetInnerHTML={{

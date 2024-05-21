@@ -23,14 +23,8 @@ const { video } = Astro.props;
             loading="lazy"
           />
         </div>
-        <div
-          class="absolute inset-0 grid place-items-center"
-          id="yt-custom-thumb-btn"
-        >
-          <button>
-            <WavePlayButton />
-          </button>
-        </div>
+
+        <WavePlayButton />
       </div>
     </section>
   )

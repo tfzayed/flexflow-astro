@@ -1,16 +1,20 @@
+// what we do
 export type SingleFeature = {
   image: string;
   content: string;
   title: string;
 };
 
+// insights
 export type Insight = {
-  title: string;
-  content: string;
-  image: string;
-  insights: {
+  insight: {
     title: string;
-    icon: string;
+    content: string;
+    image: string;
+    insights: {
+      title: string;
+      icon: string;
+    }[];
   }[];
 };
 
@@ -18,15 +22,6 @@ export type Button = {
   enable: boolean;
   label: string;
   link: string;
-};
-
-export type Feature = {
-  enable: boolean;
-  title: string;
-  content: string;
-  badge: string;
-  features: SingleFeature[];
-  insight: Insight[];
 };
 
 export type Testimonial = {
@@ -41,36 +36,12 @@ export type Testimonial = {
   }[];
 };
 
-export type IntegrationCard = {
-  homepage_section: {
-    title: string;
-    badge: string;
-    content: string;
-    button: Button;
-    apps: string[];
-  };
-};
-
-export type PricingSection = {
+export type Faq = {
   title: string;
   badge: string;
-  features: string[];
-  plans: {
-    label: string;
-    id: string;
-    packs: {
-      type: string;
-      icon: string;
-      price: string;
-      compound: string;
-      features: string[];
-    }[];
-  }[];
-};
-
-export type CardType = {
-  title: string;
   content: string;
-  icon: string;
-  date?: string;
+  faqs: {
+    header: string;
+    content: string;
+  }[];
 };

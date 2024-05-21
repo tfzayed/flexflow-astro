@@ -1,10 +1,9 @@
 ---
 import { markdownify } from "@/lib/utils/textConverter";
-import type { IntegrationCard } from "@/types";
 import { getEntry } from "astro:content";
 
 const integration = await getEntry("integration", "-index");
-const { homepage_section } = integration.data as IntegrationCard;
+const { homepage_section } = integration.data;
 ---
 
 <section class="section">
@@ -17,27 +16,27 @@ const { homepage_section } = integration.data as IntegrationCard;
           <span
             class="bg-secondary/15 px-5 py-1 rounded-full text-base-sm text-dark inline-block mb-3"
             data-aos="fade-left-sm"
-            set:html={markdownify(homepage_section.badge)}
+            set:html={markdownify(homepage_section?.badge!)}
           />
 
           <h2
             class="mb-4"
             data-aos="fade-left-sm"
             data-aos-delay="50"
-            set:html={markdownify(homepage_section.title)}
+            set:html={markdownify(homepage_section?.title!)}
           />
           <p
             class="mb-7 text-dark/75 font-medium"
             data-aos="fade-left-sm"
             data-aos-delay="100"
-            set:html={markdownify(homepage_section.content)}
+            set:html={markdownify(homepage_section?.content!)}
           />
           {
-            homepage_section.button.enable && (
+            homepage_section?.button.enable && (
               <a
-                href={homepage_section.button.link}
+                href={homepage_section?.button.link}
                 class="btn btn-secondary"
-                set:html={markdownify(homepage_section.button.label)}
+                set:html={markdownify(homepage_section?.button.label)}
               />
             )
           }
@@ -47,7 +46,7 @@ const { homepage_section } = integration.data as IntegrationCard;
           <div class="animate-features">
             <div class="animate-features-top-images">
               {
-                homepage_section.apps
+                homepage_section?.apps
                   .slice(0, 3)
                   .map((app: string | null | undefined, i: number) => (
                     <img
@@ -61,7 +60,7 @@ const { homepage_section } = integration.data as IntegrationCard;
             </div>
             <div class="animate-features-middle-images">
               {
-                homepage_section.apps
+                homepage_section?.apps
                   .slice(3, 7)
                   .map((app: string | null | undefined, i: number) => (
                     <img
@@ -75,7 +74,7 @@ const { homepage_section } = integration.data as IntegrationCard;
             </div>
             <div class="animate-features-bottom-images">
               {
-                homepage_section.apps
+                homepage_section?.apps
                   .slice(7)
                   .map((app: string | null | undefined, i: number) => (
                     <img
